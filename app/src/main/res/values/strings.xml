@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Bienvenido!</string>
+    <string name="app_name">Cebanc-Pizza</string>
+    <string name="title_activity_seleccion_productos">Haga su seleccion</string>
 </resources>
