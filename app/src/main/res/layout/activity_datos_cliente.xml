@@ -13,6 +13,7 @@
         android:ems="10"
         android:id="@+id/edtNombre"
         android:hint="Nombre"
+
         android:layout_above="@+id/edtDireccion"
         android:layout_centerHorizontal="true" />
 
