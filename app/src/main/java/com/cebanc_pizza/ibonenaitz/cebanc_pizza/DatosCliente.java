@@ -7,7 +7,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class DatosCliente extends AppCompatActivity {
 
@@ -21,7 +25,7 @@ public class DatosCliente extends AppCompatActivity {
         setContentView(R.layout.activity_datos_cliente);
 
         // Botón de salida (final de la aplicación)
-        final Button boton_salida = (Button) findViewById(R.id.btnSalir);
+        final ImageView boton_salida = (ImageView) findViewById(R.id.imgSalir);
         boton_salida.setOnClickListener(new OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
@@ -38,7 +42,8 @@ public class DatosCliente extends AppCompatActivity {
                                                 direccion = (EditText) findViewById(R.id.edtDireccion);
                                                 telefono = (EditText) findViewById(R.id.edtTelefono);
                                                 if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() >= 9 ){
-
+                                                    Persona cliente = new Persona(Integer.parseInt(telefono.getText().toString()),nombre.getText().toString(),direccion.getText().toString());
+                                                    setContentView(R.layout.activity_seleccion_bebida);
                                                 }else{
                                                     Toast.makeText(getApplicationContext(),"Datos no validos, intentalo de nuevo",Toast.LENGTH_SHORT).show();
                                                 }

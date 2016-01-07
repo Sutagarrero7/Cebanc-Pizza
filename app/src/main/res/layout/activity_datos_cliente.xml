@@ -4,7 +4,8 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".DatosCliente">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".DatosCliente"
+    android:background="#fd1919">
 
     <EditText
         android:layout_width="match_parent"
@@ -13,18 +14,10 @@
         android:ems="10"
         android:id="@+id/edtNombre"
         android:hint="Nombre"
-        android:layout_above="@+id/edtDireccion"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/edtDireccion"
-        android:hint="Direccion"
-        android:layout_above="@+id/edtTelefono"
-        android:layout_centerHorizontal="true" />
+        android:background="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="match_parent"
@@ -33,18 +26,24 @@
         android:ems="10"
         android:id="@+id/edtTelefono"
         android:hint="Telefono"
-        android:layout_above="@+id/btnSalir"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="104dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Salir"
-        android:id="@+id/btnSalir"
-        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/edtNombre"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPostalAddress"
+        android:ems="10"
+        android:id="@+id/edtDireccion"
+        android:hint="Direccion"
+        android:background="#ffffff"
+        android:layout_below="@+id/edtTelefono"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="27dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -53,6 +52,26 @@
         android:id="@+id/btnContinuar"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="#ffffff" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgLogo"
+        android:background="@drawable/pizza"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:id="@+id/imgSalir"
+        android:layout_alignTop="@+id/btnContinuar"
+        android:layout_toStartOf="@+id/btnContinuar"
+        android:background="@drawable/salir"
+        android:layout_marginRight="200dp"
+        android:clickable="true" />
 
 </RelativeLayout>
