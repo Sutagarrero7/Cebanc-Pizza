@@ -17,6 +17,10 @@
         </activity>
         <activity android:name=".SeleccionProductos" >
         </activity>
+        <activity android:name=".SeleccionComida" >
+        </activity>
+        <activity android:name=".SeleccionBebida" >
+        </activity>
     </application>
 
 </manifest>
