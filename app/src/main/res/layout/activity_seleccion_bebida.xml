@@ -7,4 +7,86 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.cebanc_pizza.ibonenaitz.cebanc_pizza.SeleccionBebida">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView"
+                    android:background="@drawable/burn"
+                    android:clickable="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView2"
+                    android:background="@drawable/cocacola_light"
+                    android:clickable="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView3"
+                    android:background="@drawable/cocalcola"
+                    android:clickable="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView4"
+                    android:background="@drawable/fanta_limon"
+                    android:clickable="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="202dp"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView5"
+                    android:background="@drawable/cocalcola"
+                    android:clickable="true" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView6"
+                    android:background="@drawable/fanta_limon"
+                    android:clickable="true" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </RelativeLayout>
