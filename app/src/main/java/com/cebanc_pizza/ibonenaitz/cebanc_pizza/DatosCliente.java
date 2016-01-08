@@ -18,6 +18,7 @@ public class DatosCliente extends AppCompatActivity {
     private EditText nombre;
     private EditText direccion;
     private EditText telefono;
+    public Persona cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class DatosCliente extends AppCompatActivity {
                                                 direccion = (EditText) findViewById(R.id.edtDireccion);
                                                 telefono = (EditText) findViewById(R.id.edtTelefono);
                                                 if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() >= 9 ){
-                                                    Persona cliente = new Persona(Integer.parseInt(telefono.getText().toString()),nombre.getText().toString(),direccion.getText().toString());
+                                                    cliente = new Persona(Integer.parseInt(telefono.getText().toString()),nombre.getText().toString(),direccion.getText().toString());
                                                     setContentView(R.layout.activity_seleccion_bebida);
                                                 }else{
                                                     Toast.makeText(getApplicationContext(),"Datos no validos, intentalo de nuevo",Toast.LENGTH_SHORT).show();
