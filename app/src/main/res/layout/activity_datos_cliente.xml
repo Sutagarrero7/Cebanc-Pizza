@@ -67,7 +67,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:id="@+id/imgSalir"
+        android:id="@+id/imgAniadir"
         android:layout_alignTop="@+id/btnContinuar"
         android:layout_toStartOf="@+id/btnContinuar"
         android:background="@drawable/salir"

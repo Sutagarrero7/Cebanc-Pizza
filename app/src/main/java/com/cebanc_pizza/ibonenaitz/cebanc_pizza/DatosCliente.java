@@ -1,6 +1,5 @@
 package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
@@ -9,9 +8,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class DatosCliente extends AppCompatActivity {
 
@@ -26,7 +22,7 @@ public class DatosCliente extends AppCompatActivity {
         setContentView(R.layout.activity_datos_cliente);
 
         // Botón de salida (final de la aplicación)
-        final ImageView boton_salida = (ImageView) findViewById(R.id.imgSalir);
+        final ImageView boton_salida = (ImageView) findViewById(R.id.imgAniadir);
         boton_salida.setOnClickListener(new OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
