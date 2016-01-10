@@ -145,10 +145,9 @@
         android:layout_height="50dp"
         android:id="@+id/imgAbajo"
         android:background="@drawable/abajo"
-        android:visibility="visible"
-        android:layout_alignBottom="@+id/imgCocaColaLigth"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:clickable="true" />
+        android:clickable="false"
+        android:layout_alignTop="@+id/img7nup"
+        android:layout_alignRight="@+id/btnContinuar"
+        android:layout_alignEnd="@+id/btnContinuar" />
 
 </RelativeLayout>

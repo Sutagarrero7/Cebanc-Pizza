@@ -3,7 +3,6 @@ package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,9 +19,20 @@ public class SeleccionBebida extends AppCompatActivity {
     TextView precio;
     Dialog d;
     ArrayList<Producto> lista_productos;
-    final ImageView imagen_cocacola = (ImageView)findViewById(R.id.imgCocaCola),imagen_arriba = (ImageView)findViewById(R.id.imgArriba),imagen_abajo = (ImageView)findViewById(R.id.imgAbajo),imagen_burn = (ImageView)findViewById(R.id.imgBurn),imagen_cocacola_ligth = (ImageView)findViewById(R.id.imgCocaColaLigth),
-    getImagen_cocacola_zero = (ImageView)findViewById(R.id.imgCocaColaZero ) ,imagen_fanta_n = (ImageView)findViewById(R.id.imgFantaNaranja ) ,imagen_fanta_l = (ImageView)findViewById(R.id.imgFantaLimon ),imagen_mahou = (ImageView)findViewById(R.id.imgMahou ),imagen_mahou_sin = (ImageView)findViewById(R.id.imgMahouSin ),imagen_nestea = (ImageView)findViewById(R.id.imgNestea ),
-            imagen_redbull = (ImageView)findViewById(R.id.imgRedbull ), imagen_siete = (ImageView)findViewById(R.id.img7nup ), imagen_sprite = (ImageView)findViewById(R.id.imgSprite );
+    final ImageView imagen_cocacola = (ImageView)findViewById(R.id.imgCocaCola),
+            imagen_arriba = (ImageView)findViewById(R.id.imgArriba),
+            imagen_abajo = (ImageView)findViewById(R.id.imgAbajo),
+            imagen_burn = (ImageView)findViewById(R.id.imgBurn),
+            imagen_cocacola_ligth = (ImageView)findViewById(R.id.imgCocaColaLigth),
+            Imagen_cocacola_zero = (ImageView)findViewById(R.id.imgCocaColaZero ) ,
+            imagen_fanta_n = (ImageView)findViewById(R.id.imgFantaNaranja ) ,
+            imagen_fanta_l = (ImageView)findViewById(R.id.imgFantaLimon ),
+            imagen_mahou = (ImageView)findViewById(R.id.imgMahou ),
+            imagen_mahou_sin = (ImageView)findViewById(R.id.imgMahouSin ),
+            imagen_nestea = (ImageView)findViewById(R.id.imgNestea ),
+            imagen_redbull = (ImageView)findViewById(R.id.imgRedbull ),
+            imagen_siete = (ImageView)findViewById(R.id.img7nup ),
+            imagen_sprite = (ImageView)findViewById(R.id.imgSprite );
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +68,10 @@ public class SeleccionBebida extends AppCompatActivity {
                                                 imagen_abajo.setVisibility(View.INVISIBLE);
                                                 imagen_arriba.setVisibility(View.VISIBLE);
                                                 Toast.makeText(getApplicationContext(), "Abajo", Toast.LENGTH_SHORT).show();
+                                                setContentView(R.layout.activity_seleccion_bebida);
                                             }
 
-                });
+        });
 
         // Botón continuar
         final Button continuar = (Button) findViewById(R.id.btnContinuar);
@@ -122,6 +133,8 @@ public class SeleccionBebida extends AppCompatActivity {
         });
     d.show();
     }
+
+
     public Producto añadirProducto(String nombre, int cantidad, String precio){
         int pvp = Integer.parseInt(precio.substring(8,11));
         Producto p=new Producto(pvp,cantidad,nombre,"");
