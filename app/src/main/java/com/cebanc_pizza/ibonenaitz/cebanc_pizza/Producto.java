@@ -5,17 +5,28 @@ package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
  */
 public class Producto {
 
-    private int precio,cantidad;
-    private String nombre,extra;
+    private int cantidad;
+    private double precio;
+    private String nombre,extra,tamaño;
 
-    public Producto(int precio, int cantidad, String nombre, String extra) {
+    public String getTamaño() {
+        return tamaño;
+    }
+
+    public void setTamaño(String tamaño) {
+        this.tamaño = tamaño;
+    }
+
+    public Producto(double precio, int cantidad, String nombre, String extra,String tamaño) {
         this.precio = precio;
         this.cantidad = cantidad;
         this.nombre = nombre;
         this.extra = extra;
+        this.tamaño = tamaño;
+
     }
 
-    public void setPrecio(int precio) {
+    public void setPrecio(double precio) {
         this.precio = precio;
     }
 
@@ -31,9 +42,7 @@ public class Producto {
         this.extra = extra;
     }
 
-    public int getPrecio() {
-
-        return precio;
+    public double getPrecio() {return precio;
     }
 
     public int getCantidad() {

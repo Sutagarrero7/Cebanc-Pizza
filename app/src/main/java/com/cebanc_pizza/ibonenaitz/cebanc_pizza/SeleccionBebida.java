@@ -4,24 +4,29 @@ import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 
 public class SeleccionBebida extends AppCompatActivity {
-    String nombre_class;
+    String nombre_class,tamanio;
     TextView precio,cant;
     Dialog d;
     ArrayList<Producto> lista_productos;
     ImageView imagen_cocacola,imagen_burn,imagen_cocacola_ligth,imagen_cocacola_zero,imagen_fanta_n,imagen_fanta_l,imagen_mahou,imagen_mahou_sin,imagen_nestea,imagen_redbull,imagen_siete,imagen_sprite;
     Button btnContinuar_Bebidas;
+    Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_bebida);
+        lista_productos = new ArrayList<Producto>();
         btnContinuar_Bebidas = (Button)findViewById(R.id.btnContinuar_Bebidas);
         imagen_cocacola = (ImageView)findViewById(R.id.imgCocaCola);
         imagen_burn = (ImageView)findViewById(R.id.imgBurn);
@@ -38,15 +43,80 @@ public class SeleccionBebida extends AppCompatActivity {
 
         imagen_burn.setOnClickListener(new View.OnClickListener() {
                                             @Override
-                                            public void onClick(View v) {
-                                                abrirPopUp(v, "burn");
+                                            public void onClick(View v) {abrirPopUp(v, "burn");
                                             }
                                         }
         );
+        imagen_cocacola.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {abrirPopUp(v, "cocacola");
+                                           }
+                                       }
+        );
+        imagen_cocacola_ligth.setOnClickListener(new View.OnClickListener() {
+                                               @Override
+                                               public void onClick(View v) {abrirPopUp(v, "cocacola_ligth");
+                                               }
+                                           }
+        );
+        imagen_cocacola_zero.setOnClickListener(new View.OnClickListener() {
+                                                     @Override
+                                                     public void onClick(View v) {abrirPopUp(v, "cocacola_zero");
+                                                     }
+                                                 }
+        );
+        imagen_fanta_n.setOnClickListener(new View.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(View v) {abrirPopUp(v, "fanta_n");
+                                                        }
+                                                    }
+        );
+        imagen_fanta_l.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {abrirPopUp(v, "fanta_l");
+                                              }
+                                          }
+        );
+        imagen_mahou.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {abrirPopUp(v, "mahou");
+                                              }
+                                          }
+        );
+        imagen_mahou_sin.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {abrirPopUp(v, "mahou_sin");
+                                            }
+                                        }
+        );
+        imagen_nestea.setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                                                public void onClick(View v) {abrirPopUp(v, "nestea");
+                                                }
+                                            }
+        );
+        imagen_redbull.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {abrirPopUp(v, "redbull");
+                                             }
+                                         }
+        );
+        imagen_siete.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {abrirPopUp(v, "siete");
+                                             }
+                                         }
+        );
+        imagen_sprite.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {abrirPopUp(v, "sprite");
+                                             }
+                                         }
+        );
+
         btnContinuar_Bebidas.setOnClickListener(new View.OnClickListener() {
                                                     @Override
-                                                    public void onClick(View v) {
-                                                        Toast.makeText(getApplicationContext(), "No Disponible", Toast.LENGTH_SHORT).show();
+                                                    public void onClick(View v) {Toast.makeText(getApplicationContext(), "No Disponible", Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
         );
@@ -81,12 +151,29 @@ public class SeleccionBebida extends AppCompatActivity {
         }
         cant = (TextView)d.findViewById(R.id.txtCantidad);
         ImageView aniadir= (ImageView)d.findViewById(R.id.imgAniadir);
+        spinner = (Spinner) d.findViewById(R.id.cmbTamanio);
+        String[] valores = {"Grande","Mediano","Pequeño"};
+        spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valores));
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
+            {
+                tamanio = spinner.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                // vacio
+
+            }
+        });
         aniadir.setOnClickListener(new ImageView.OnClickListener() {
            @Override
            public void onClick(View arg0) {
                int c = Integer.parseInt(cant.getText().toString());
                Producto p;
-               p = añadirProducto(nombre_class,c,precio.getText().toString());
+               p = añadirProducto(nombre_class,c,precio.getText().toString(),"",tamanio);
                lista_productos.add(p);
                d.dismiss();
         }
@@ -102,9 +189,9 @@ public class SeleccionBebida extends AppCompatActivity {
         });
     d.show();
     }
-    public Producto añadirProducto(String nombre, int cantidad, String precio){
-        int pvp = Integer.parseInt(precio.substring(8,11));
-        Producto p=new Producto(pvp,cantidad,nombre,"");
+    public Producto añadirProducto(String nombre, int cantidad, String precio,String extra,String tamaño){
+        double pvp = Double.parseDouble(precio.substring(8, 12).toString());
+        Producto p=new Producto(pvp,cantidad,nombre,extra,tamaño);
         return p;
     }
 }
