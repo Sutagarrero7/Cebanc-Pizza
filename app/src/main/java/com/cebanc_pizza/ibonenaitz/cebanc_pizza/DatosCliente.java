@@ -41,7 +41,7 @@ public class DatosCliente extends AppCompatActivity {
                                                    telefono = (EditText) findViewById(R.id.edtTelefono);
                                                   if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() == 9) {
                                                        cliente = new Persona(Integer.parseInt(telefono.getText().toString()), nombre.getText().toString(), direccion.getText().toString());
-                                                       Intent intent = new Intent(DatosCliente.this,SeleccionBebida.class);
+                                                       Intent intent = new Intent(DatosCliente.this,SeleccionComida.class);
                                                        startActivity(intent);
                                                    } else {
                                                        Toast.makeText(getApplicationContext(), "Datos no validos, intentalo de nuevo", Toast.LENGTH_SHORT).show();
