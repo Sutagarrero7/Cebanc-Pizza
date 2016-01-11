@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/Ancho_Popup" android:layout_height="@dimen/Alto_Popup"
+    android:layout_width="match_parent" android:layout_height="@dimen/Alto_Popup"
     android:background="#e60d12"
     android:orientation="vertical">
 
@@ -16,8 +16,8 @@
         android:layout_marginBottom="5dp" />
 
     <NumberPicker
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_width="70dp"
+        android:layout_height="120dp"
         android:id="@+id/cantidad"
         android:layout_gravity="center_horizontal"
         android:background="#ffffff"

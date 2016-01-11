@@ -76,7 +76,7 @@ public class SeleccionBebida extends AppCompatActivity {
                 precio.setText("Precio: 2.10€");
                 break;
             case "redbull":
-                precio.setText("Precio: 2.00");
+                precio.setText("Precio: 2.00€");
                 break;
             default:
                 precio.setText("Precio: 1.00€");
