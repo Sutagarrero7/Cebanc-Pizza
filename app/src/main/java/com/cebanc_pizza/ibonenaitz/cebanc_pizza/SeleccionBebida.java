@@ -6,16 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 public class SeleccionBebida extends AppCompatActivity {
-    NumberPicker cant;
     String nombre_class;
-    TextView precio;
+    TextView precio,cant;
     Dialog d;
     ArrayList<Producto> lista_productos;
     ImageView imagen_cocacola,imagen_burn,imagen_cocacola_ligth,imagen_cocacola_zero,imagen_fanta_n,imagen_fanta_l,imagen_mahou,imagen_mahou_sin,imagen_nestea,imagen_redbull,imagen_siete,imagen_sprite;
@@ -82,12 +79,12 @@ public class SeleccionBebida extends AppCompatActivity {
                 precio.setText("Precio: 1.00€");
                 break;
         }
-        cant = (NumberPicker)d.findViewById(R.id.cantidad);
+        cant = (TextView)d.findViewById(R.id.txtCantidad);
         ImageView aniadir= (ImageView)d.findViewById(R.id.imgAniadir);
         aniadir.setOnClickListener(new ImageView.OnClickListener() {
            @Override
            public void onClick(View arg0) {
-               int c = cant.getValue();
+               int c = Integer.parseInt(cant.getText().toString());
                Producto p;
                p = añadirProducto(nombre_class,c,precio.getText().toString());
                lista_productos.add(p);
