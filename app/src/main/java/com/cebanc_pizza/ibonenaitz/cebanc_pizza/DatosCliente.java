@@ -33,21 +33,20 @@ public class DatosCliente extends AppCompatActivity {
         // Botón de continuar
         final Button boton_continuar = (Button) findViewById(R.id.btnContinuar);
         boton_continuar.setOnClickListener(new OnClickListener() {
-                                               @Override
-                                               public void onClick(View v) {
-                                                   nombre = (EditText) findViewById(R.id.edtNombre);
-                                                   direccion = (EditText) findViewById(R.id.edtDireccion);
-                                                   telefono = (EditText) findViewById(R.id.edtTelefono);
-                                                  if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() == 9) {
-                                                       cliente = new Persona(Integer.parseInt(telefono.getText().toString()), nombre.getText().toString(), direccion.getText().toString());
-                                                       setContentView(R.layout.activity_seleccion_bebida);
-                                                   } else {
-                                                       Toast.makeText(getApplicationContext(), "Datos no validos, intentalo de nuevo", Toast.LENGTH_SHORT).show();
-                                                   }
+                                            @Override
+                                            public void onClick(View v) {
+                                                nombre = (EditText) findViewById(R.id.edtNombre);
+                                                direccion = (EditText) findViewById(R.id.edtDireccion);
+                                                telefono = (EditText) findViewById(R.id.edtTelefono);
+                                                if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() >= 9 ){
+                                                    cliente = new Persona(Integer.parseInt(telefono.getText().toString()),nombre.getText().toString(),direccion.getText().toString());
+                                                    setContentView(R.layout.activity_seleccion_bebida);
+                                                }else{
+                                                    Toast.makeText(getApplicationContext(),"Datos no validos, intentalo de nuevo",Toast.LENGTH_SHORT).show();
+                                                }
 
-                                               }
-                                           }
-        );}
-
+                                            }
+                                        }
+        );
+    }
 }
-

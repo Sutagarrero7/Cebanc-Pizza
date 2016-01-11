@@ -20,7 +20,7 @@
     <ImageView
         android:layout_width="@dimen/Medidas_Cuadrados"
         android:layout_height="@dimen/Medidas_Cuadrados"
-        android:id="@+id/imgBurn"
+        android:id="@+id/imgBaconCrispy"
         android:background="@drawable/burn"
         android:layout_above="@+id/imgNestea"
         android:layout_alignParentLeft="true"
@@ -29,21 +29,21 @@
     <ImageView
         android:layout_width="@dimen/Medidas_Cuadrados"
         android:layout_height="@dimen/Medidas_Cuadrados"
-        android:id="@+id/imgCocaColaLigth"
+        android:id="@+id/imgPeperoni"
         android:background="@drawable/cocacola_light"
         android:adjustViewBounds="true"
-        android:layout_below="@+id/imgCocaColaZero"
-        android:layout_alignLeft="@+id/imgCocaColaZero"
-        android:layout_alignStart="@+id/imgCocaColaZero" />
+        android:layout_below="@+id/imgHawaiana"
+        android:layout_alignLeft="@+id/imgHawaiana"
+        android:layout_alignStart="@+id/imgHawaiana" />
 
     <ImageView
         android:layout_width="@dimen/Medidas_Cuadrados"
         android:layout_height="@dimen/Medidas_Cuadrados"
-        android:id="@+id/imgCocaColaZero"
+        android:id="@+id/imgHawaiana"
         android:background="@drawable/cocacola_zero"
-        android:layout_alignTop="@+id/imgBurn"
-        android:layout_toRightOf="@+id/imgBurn"
-        android:layout_toEndOf="@+id/imgBurn" />
+        android:layout_alignTop="@+id/imgBaconCrispy"
+        android:layout_toRightOf="@+id/imgBaconCrispy"
+        android:layout_toEndOf="@+id/imgBaconCrispy" />
 
     <ImageView
         android:layout_width="@dimen/Medidas_Cuadrados"
@@ -61,16 +61,16 @@
         android:id="@+id/imgFantaLimon"
         android:background="@drawable/fanta_limon"
         android:layout_above="@+id/imgMahouSin"
-        android:layout_toRightOf="@+id/imgBurn"
-        android:layout_toEndOf="@+id/imgBurn" />
+        android:layout_toRightOf="@+id/imgBaconCrispy"
+        android:layout_toEndOf="@+id/imgBaconCrispy" />
 
     <ImageView
         android:layout_width="@dimen/Medidas_Cuadrados"
         android:layout_height="@dimen/Medidas_Cuadrados"
-        android:id="@+id/imgFantaNaranja"
+        android:id="@+id/imgEspecialCasa"
         android:background="@drawable/fanta_naranja"
         android:adjustViewBounds="false"
-        android:layout_below="@+id/imgBurn"
+        android:layout_below="@+id/imgBaconCrispy"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -79,7 +79,7 @@
         android:layout_height="@dimen/Medidas_Cuadrados"
         android:id="@+id/imgMahou"
         android:background="@drawable/mahou"
-        android:layout_below="@+id/imgFantaNaranja"
+        android:layout_below="@+id/imgEspecialCasa"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -135,7 +135,7 @@
         android:layout_height="50dp"
         android:id="@+id/imgArriba"
         android:background="@drawable/arriba"
-        android:layout_alignTop="@+id/imgCocaColaLigth"
+        android:layout_alignTop="@+id/imgPeperoni"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:visibility="invisible" />
