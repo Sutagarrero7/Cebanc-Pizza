@@ -14,70 +14,69 @@
         android:layout_height="wrap_content"
         android:id="@+id/scrollView" >
 
-    </ScrollView>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
-
-        <ImageView
-            android:layout_width="@dimen/Medidas_Cuadrados"
-            android:layout_height="@dimen/Medidas_Cuadrados"
-            android:id="@+id/imgBaconCrispy"
-            android:background="@drawable/pizza_baconCrispy"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="@dimen/Medidas_Cuadrados"
-            android:layout_height="@dimen/Medidas_Cuadrados"
-            android:id="@+id/imgPeperoni"
-            android:background="@drawable/pizza_peperoni"
-            android:adjustViewBounds="true"
-            android:layout_below="@+id/imgHawaiana"
-            android:layout_alignLeft="@+id/imgHawaiana"
-            android:layout_alignStart="@+id/imgHawaiana" />
-
-        <ImageView
-            android:layout_width="@dimen/Medidas_Cuadrados"
-            android:layout_height="@dimen/Medidas_Cuadrados"
-            android:id="@+id/imgHawaiana"
-            android:background="@drawable/pizza_hawaiana"
-            android:layout_alignTop="@+id/imgBaconCrispy"
-            android:layout_toRightOf="@+id/imgBaconCrispy"
-            android:layout_toEndOf="@+id/imgBaconCrispy" />
-
-        <ImageView
-            android:layout_width="@dimen/Medidas_Cuadrados"
-            android:layout_height="@dimen/Medidas_Cuadrados"
-            android:id="@+id/img4q"
-            android:background="@drawable/pizza_4q"
-            android:adjustViewBounds="false"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="@dimen/Medidas_Cuadrados"
-            android:layout_height="@dimen/Medidas_Cuadrados"
-            android:id="@+id/imgEspecialCasa"
-            android:background="@drawable/pizza_especialCasa"
-            android:adjustViewBounds="false"
-            android:layout_below="@+id/imgBaconCrispy"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/imgSteakHouse"
-            android:layout_below="@+id/imgPeperoni"
-            android:layout_toRightOf="@+id/img4q"
-            android:layout_toEndOf="@+id/img4q"
-            android:background="@drawable/pizza_steakHouse" />
-    </LinearLayout>
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:layout_width="@dimen/Medidas_Cuadrados"
+                android:layout_height="@dimen/Medidas_Cuadrados"
+                android:id="@+id/imgBaconCrispy"
+                android:background="@drawable/pizza_baconCrispy"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="@dimen/Medidas_Cuadrados"
+                android:layout_height="@dimen/Medidas_Cuadrados"
+                android:id="@+id/imgPeperoni"
+                android:background="@drawable/pizza_peperoni"
+                android:adjustViewBounds="true"
+                android:layout_below="@+id/imgHawaiana"
+                android:layout_alignLeft="@+id/imgHawaiana"
+                android:layout_alignStart="@+id/imgHawaiana" />
+
+            <ImageView
+                android:layout_width="@dimen/Medidas_Cuadrados"
+                android:layout_height="@dimen/Medidas_Cuadrados"
+                android:id="@+id/imgHawaiana"
+                android:background="@drawable/pizza_hawaiana"
+                android:layout_alignTop="@+id/imgBaconCrispy"
+                android:layout_toRightOf="@+id/imgBaconCrispy"
+                android:layout_toEndOf="@+id/imgBaconCrispy" />
+
+            <ImageView
+                android:layout_width="@dimen/Medidas_Cuadrados"
+                android:layout_height="@dimen/Medidas_Cuadrados"
+                android:id="@+id/img4q"
+                android:background="@drawable/pizza_4q"
+                android:adjustViewBounds="false"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="@dimen/Medidas_Cuadrados"
+                android:layout_height="@dimen/Medidas_Cuadrados"
+                android:id="@+id/imgEspecialCasa"
+                android:background="@drawable/pizza_especialCasa"
+                android:adjustViewBounds="false"
+                android:layout_below="@+id/imgBaconCrispy"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imgSteakHouse"
+                android:layout_below="@+id/imgPeperoni"
+                android:layout_toRightOf="@+id/img4q"
+                android:layout_toEndOf="@+id/img4q"
+                android:background="@drawable/pizza_steakHouse" />
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>
