@@ -3,7 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
-    <dimen name="Medidas_Cuadrados">140dp</dimen>
+    <dimen name="Medidas_Fotos">175dp</dimen>
     <dimen name="Ancho_Popup">320dp</dimen>
     <dimen name="Alto_Popup">200dp</dimen>
 </resources>
