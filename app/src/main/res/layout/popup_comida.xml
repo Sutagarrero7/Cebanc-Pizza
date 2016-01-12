@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content" android:layout_height="@dimen/Alto_Popup"
+    android:layout_width="wrap_content" android:layout_height="400dp"
     android:background="#e60d12"
     android:orientation="vertical">
 
@@ -81,6 +81,25 @@
         android:id="@+id/cmbTamanio"
         android:background="#ffffff"
         android:layout_below="@+id/lblTamaño"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seleccione Extra"
+        android:id="@+id/textView2"
+        android:textColor="#ffffff"
+        android:textSize="20dp"
+        android:layout_below="@+id/cmbTamanio"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp" />
+    <Spinner
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:id="@+id/cmbExtra"
+        android:background="#ffffff"
+        android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp" />
 
