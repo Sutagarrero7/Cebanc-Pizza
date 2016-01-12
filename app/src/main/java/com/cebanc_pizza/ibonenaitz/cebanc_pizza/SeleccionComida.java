@@ -25,13 +25,13 @@ public class SeleccionComida extends AppCompatActivity {
 
     private Button button;
     private TextView resultText;
-    String nombre_class,tamanio;
+    String nombre_class,tamanio,extra;
     TextView precio,cant;
     Dialog d;
     ArrayList<Producto> lista_productos;
     ImageView imgBaconCrispy,imgEspecialCasa,imgPeperoni,img4q,imgHawaiana,imgSteakHouse;
     Button btnContinuar_Comida;
-    Spinner spinner;
+    Spinner spinner,spinner2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,13 +149,30 @@ public class SeleccionComida extends AppCompatActivity {
 
             }
         });
+        spinner2 = (Spinner) d.findViewById(R.id.cmbExtra);
+        String[] valores2 = {"Ninguno","Extra queso","Extra Salsa"};
+        spinner2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valores2));
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
+            {
+                extra = spinner2.getSelectedItem().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent)
+            {
+                // vacio
+
+            }
+        });
         aniadir.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 int c = Integer.parseInt(cant.getText().toString());
                 Producto p;
-                p = añadirProducto(nombre_class,c,precio.getText().toString(),"",tamanio);
-                lista_productos.add(p);
+                p = añadirProduto(nombre_class, c, precio.getText().toString(), extra, tamanio);
+                GestionaPedido.añadirProducto(nombre_class, c, precio.getText().toString(), extra, tamanio);
                 d.dismiss();
             }
 
@@ -170,8 +187,9 @@ public class SeleccionComida extends AppCompatActivity {
         });
         d.show();
     }
-    public Producto añadirProducto(String nombre, int cantidad, String precio,String extra,String tamaño){
+    public Producto añadirProduto(String nombre, int cantidad, String precio,String extra,String tamaño){
         double pvp = Double.parseDouble(precio.substring(8, 12).toString());
+
         Producto p=new Producto(pvp,cantidad,nombre,extra,tamaño);
         return p;
     }
