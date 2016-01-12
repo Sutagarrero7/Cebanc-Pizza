@@ -17,7 +17,6 @@ public class SeleccionBebida extends AppCompatActivity {
     String nombre_class,tamanio;
     TextView precio,cant;
     Dialog d;
-    ArrayList<Producto> lista_productos;
     ImageView imagen_cocacola,imagen_burn,imagen_cocacola_ligth,imagen_cocacola_zero,imagen_fanta_n,imagen_fanta_l,imagen_mahou,imagen_mahou_sin,imagen_nestea,imagen_redbull,imagen_siete,imagen_sprite;
     Button btnContinuar_Bebidas;
     Spinner spinner;
@@ -26,7 +25,6 @@ public class SeleccionBebida extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion_bebida);
-        lista_productos = new ArrayList<Producto>();
         btnContinuar_Bebidas = (Button)findViewById(R.id.btnContinuar_Bebidas);
         imagen_cocacola = (ImageView)findViewById(R.id.imgCocaCola);
         imagen_burn = (ImageView)findViewById(R.id.imgBurn);
@@ -172,9 +170,7 @@ public class SeleccionBebida extends AppCompatActivity {
            @Override
            public void onClick(View arg0) {
                int c = Integer.parseInt(cant.getText().toString());
-               Producto p;
-               p = añadirProducto(nombre_class,c,precio.getText().toString(),"",tamanio);
-               lista_productos.add(p);
+               GestionaPedido.añadirProducto(nombre_class,c,precio.getText().toString(),"",tamanio);
                d.dismiss();
         }
 
@@ -188,11 +184,6 @@ public class SeleccionBebida extends AppCompatActivity {
 
         });
     d.show();
-    }
-    public Producto añadirProducto(String nombre, int cantidad, String precio,String extra,String tamaño){
-        double pvp = Double.parseDouble(precio.substring(8, 12).toString());
-        Producto p=new Producto(pvp,cantidad,nombre,extra,tamaño);
-        return p;
     }
 }
 
