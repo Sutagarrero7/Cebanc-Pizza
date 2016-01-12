@@ -72,7 +72,7 @@ public class ResumenPedido extends AppCompatActivity {
             case "fanta_n":
                 return R.drawable.fanta_naranja;
             case "sprite":
-                return R.drawable.sprite_logo;
+                return R.drawable.sprite_logo_;
             default:
                 return 0;
         }
