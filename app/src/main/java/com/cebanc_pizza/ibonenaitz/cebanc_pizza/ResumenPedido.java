@@ -50,7 +50,7 @@ public class ResumenPedido extends AppCompatActivity {
     private int getImagenProducto(String nombre) {
         switch (nombre) {
             case "siete":
-                return R.drawable.siete;
+                return R.drawable.siete_logo;
             case "nestea":
                 return R.drawable.nestea;
             case "mahou":
