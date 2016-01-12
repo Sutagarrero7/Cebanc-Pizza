@@ -73,6 +73,18 @@ public class ResumenPedido extends AppCompatActivity {
                 return R.drawable.fanta_naranja;
             case "sprite":
                 return R.drawable.sprite_logo_;
+            case "bacon_crispy":
+                return R.drawable.pizza_bacon_crispy;
+            case "hawaiana":
+                return R.drawable.pizza_hawaiana;
+            case "especial_casa":
+                return R.drawable.pizza_especial_casa;
+            case "steak_house":
+                return R.drawable.pizza_steak_house;
+            case "peperoni":
+                return R.drawable.pizza_peperoni;
+            case "4_quesos":
+                return R.drawable.pizza_4q;
             default:
                 return 0;
         }

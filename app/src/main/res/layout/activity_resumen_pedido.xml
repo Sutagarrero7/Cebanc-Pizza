@@ -58,19 +58,10 @@
         android:layout_above="@+id/lblTotal"
         android:layout_centerHorizontal="true" />
 
-    <ScrollView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/btnFinalizar">
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lstProductos"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-    </ScrollView>
+        android:id="@+id/lstProductos"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 </RelativeLayout>
