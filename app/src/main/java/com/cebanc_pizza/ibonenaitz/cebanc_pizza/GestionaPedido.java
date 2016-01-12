@@ -11,7 +11,7 @@ public class GestionaPedido {
     static Producto p;
     static Producto pAux;
     public static void añadirProducto(String nombre, int cantidad, String precio,String extra,String tamaño){
-        int i = lista_productos.indexOf(nombre);
+        int i = buscarProducto(nombre,extra,tamaño);
         double pvp = Double.parseDouble(precio.substring(8, 12).toString());
 
         if (i == -1){
@@ -19,7 +19,7 @@ public class GestionaPedido {
             lista_productos.add(p);
         }else{
             pAux = lista_productos.get(i);
-            if (pAux.getExtra() == extra && pAux.getTamaño() == tamaño){
+            if (pAux.getExtra().equals(extra) && pAux.getTamaño().equals(tamaño)){
                 cantidad = pAux.getCantidad() + cantidad;
                 p = new Producto(pvp, cantidad, nombre, extra, tamaño);
                 lista_productos.set(i,p);
@@ -63,5 +63,20 @@ public class GestionaPedido {
             }
         }
         return total;
+    }
+    public static int buscarProducto(String nombre, String extra,String tamaño){
+        int indice = -1;
+        if (lista_productos.size() != 0) {
+            for (int i = 0; i < lista_productos.size(); i++) {
+                Producto p = lista_productos.get(i);
+                if (p.getNombre().equals(nombre)){
+                    indice = i;
+                }
+                if (indice != -1 && p.getExtra().equals(extra) && p.getTamaño().equals(tamaño)){
+                    indice = i;
+                }
+            }
+        }
+        return indice;
     }
 }
