@@ -32,8 +32,7 @@ public class ResumenPedido extends AppCompatActivity {
         actualizarListaProductos();
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
-                                            public void onClick(View v) {
-                                                System.exit(0);
+                                            public void onClick(View v) {System.exit(0);
                                             }
                                         }
 
