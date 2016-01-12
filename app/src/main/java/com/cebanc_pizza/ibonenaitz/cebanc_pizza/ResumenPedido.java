@@ -33,7 +33,7 @@ public class ResumenPedido extends AppCompatActivity {
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                System.exit(1);
+                                                System.exit(0);
                                             }
                                         }
 
