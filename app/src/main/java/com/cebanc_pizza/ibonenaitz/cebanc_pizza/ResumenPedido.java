@@ -1,23 +1,41 @@
 package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 
+import android.app.Notification;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class ResumenPedido extends AppCompatActivity {
-    ListView lista = (ListView)findViewById(R.id.lstProductos);
-    ArrayList<Producto> arrProductos = new ArrayList<>();
+    ListView lista;
+    ArrayList<Producto> arrProductos;
     Producto producto;
     String[] productos;
     int[] imagenes_productos;
+    TextView lblPrecio;
+    Button btnFinalizar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resumen_pedido);
+        lista = (ListView)findViewById(R.id.lstProductos);
+        arrProductos = new ArrayList<>();
+        lblPrecio = (TextView)findViewById(R.id.lblPrecio);
+        btnFinalizar = (Button)findViewById(R.id.btnFinalizar);
+        actualizarListaProductos();
+        btnFinalizar.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                finish();
+                                            }
+                                        }
 
+        );
     }
 
     private int getImagenProducto(String nombre) {
@@ -57,11 +75,12 @@ public class ResumenPedido extends AppCompatActivity {
         imagenes_productos = new int[arrProductos.size()];
         for (int i = 0; i < arrProductos.size(); i++) {
             producto = arrProductos.get(i);
-            productos[i] = Integer.toString(producto.getCantidad()) + " - " + producto.getNombre() +"/" + Double.toString(producto.getPrecio());
+            productos[i] = Integer.toString(producto.getCantidad()) + " - " + producto.getNombre() +"/" + Double.toString(producto.getPrecio())+"€";
             imagenes_productos[i] = getImagenProducto(producto.getNombre());
         }
         ListaAdapter adapter = new ListaAdapter(this, productos, imagenes_productos);
         lista.setAdapter(adapter);
-
+        lblPrecio.setText(Double.toString(GestionaPedido.precioTotalPedido()));
     }
+
 }

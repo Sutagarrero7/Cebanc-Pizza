@@ -53,4 +53,15 @@ public class GestionaPedido {
     public static Persona getCliente() {
         return cliente;
     }
+
+    public static double precioTotalPedido(){
+        double total = 0;
+        if (lista_productos.size() != 0) {
+            for (int i = 0; i < lista_productos.size(); i++) {
+                Producto p = lista_productos.get(i);
+                total += p.getPrecio() * p.getCantidad();
+            }
+        }
+        return total;
+    }
 }
