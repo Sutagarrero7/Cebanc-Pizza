@@ -3,6 +3,7 @@ package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -91,7 +92,9 @@ public class SeleccionComida extends AppCompatActivity {
 
         btnContinuar_Comida.setOnClickListener(new View.OnClickListener() {
                                                     @Override
-                                                    public void onClick(View v) {Toast.makeText(getApplicationContext(), "No Disponible", Toast.LENGTH_SHORT).show();
+                                                    public void onClick(View v) {
+                                                        Intent intent = new Intent(SeleccionComida.this,SeleccionBebida.class);
+                                                        startActivity(intent);
                                                     }
                                                 }
         );

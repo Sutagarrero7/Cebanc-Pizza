@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".SeleccionBebida" >
         </activity>
+        <activity android:name=".ResumenPedido" >
+        </activity>
     </application>
 
 </manifest>
