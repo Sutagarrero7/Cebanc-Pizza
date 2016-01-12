@@ -27,14 +27,65 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Large Text"
-            android:id="@+id/tituloLista"
+            android:text="nombre"
+            android:id="@+id/nombre"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="44dp"
+            android:layout_marginStart="44dp"
+            android:layout_alignTop="@+id/cantidad"
+            android:layout_toRightOf="@+id/cantidad"
+            android:layout_toEndOf="@+id/cantidad" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1"
+            android:id="@+id/cantidad"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
             android:layout_alignTop="@+id/iconLista"
             android:layout_toRightOf="@+id/iconLista"
-            android:layout_toEndOf="@+id/iconLista"
-            android:layout_marginTop="10dp"
-            android:textStyle="bold"
-            android:textColor="#ffffff" />
+            android:layout_toEndOf="@+id/iconLista" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="tamaño"
+            android:id="@+id/tamaño"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_alignBottom="@+id/iconLista"
+            android:layout_toRightOf="@+id/cantidad"
+            android:layout_toEndOf="@+id/cantidad" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="extra"
+            android:id="@+id/extra"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_alignTop="@+id/tamaño"
+            android:layout_toRightOf="@+id/nombre"
+            android:layout_toEndOf="@+id/nombre"
+            android:layout_marginLeft="22dp"
+            android:layout_marginStart="22dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="1.0"
+            android:id="@+id/precio"
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            android:layout_above="@+id/extra"
+            android:layout_toRightOf="@+id/extra"
+            android:layout_toEndOf="@+id/extra" />
 
     </RelativeLayout>
 

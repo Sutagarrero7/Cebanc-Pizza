@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,7 +15,8 @@ public class ResumenPedido extends AppCompatActivity {
     ListView lista;
     ArrayList<Producto> arrProductos;
     Producto producto;
-    String[] productos;
+
+    String[] nombre,cantidad,extra,tamanio,precio;
     int[] imagenes_productos;
     TextView lblPrecio;
     Button btnFinalizar;
@@ -31,11 +33,19 @@ public class ResumenPedido extends AppCompatActivity {
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                finish();
+                                                System.exit(1);
                                             }
                                         }
 
         );
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                Producto p = new Producto(Double.parseDouble(precio[position]),Integer.parseInt(cantidad[position]),nombre[position],extra[position],tamanio[position]);
+                GestionaPedido.eliminarProducto(p);
+            }
+        });
     }
 
     private int getImagenProducto(String nombre) {
@@ -71,14 +81,22 @@ public class ResumenPedido extends AppCompatActivity {
 
     public void actualizarListaProductos(){
         arrProductos = GestionaPedido.todoPedido();
-        productos = new String[arrProductos.size()];
+        nombre = new String[arrProductos.size()];
+        cantidad = new String[arrProductos.size()];
+        extra = new String[arrProductos.size()];
+        precio = new String[arrProductos.size()];
+        tamanio = new String[arrProductos.size()];
         imagenes_productos = new int[arrProductos.size()];
         for (int i = 0; i < arrProductos.size(); i++) {
             producto = arrProductos.get(i);
-            productos[i] = Integer.toString(producto.getCantidad()) + " - " + producto.getNombre() +"/" + Double.toString(producto.getPrecio())+"€";
+            nombre[i] = producto.getNombre();
+            cantidad[i] = Integer.toString(producto.getCantidad());
+            precio[i] = Double.toString(producto.getPrecio());
+            extra[i] = producto.getExtra();
+            tamanio[i] = producto.getTamaño();
             imagenes_productos[i] = getImagenProducto(producto.getNombre());
         }
-        ListaAdapter adapter = new ListaAdapter(this, productos, imagenes_productos);
+        ListaAdapter adapter = new ListaAdapter(this, nombre, imagenes_productos,cantidad,extra,tamanio,precio);
         lista.setAdapter(adapter);
         lblPrecio.setText(Double.toString(GestionaPedido.precioTotalPedido()));
     }
