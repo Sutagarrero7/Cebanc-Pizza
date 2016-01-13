@@ -45,7 +45,7 @@ public class ResumenPedido extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Producto p = new Producto(Double.parseDouble(precio[position]),Integer.parseInt(cantidad[position]),nombre[position],extra[position],tamanio[position]);
                 GestionaPedido.eliminarProducto(p);
-                Toast.makeText(getApplicationContext(), nombre[position], Toast.LENGTH_SHORT).show();
+                actualizarListaProductos();
             }
         });
 

@@ -33,7 +33,11 @@ public class GestionaPedido {
     }
 
     public static void eliminarProducto(Producto p){
-        int i = buscarProductoExacto();
+        String nombre, extra, tamano;
+        nombre = p.getNombre();
+        extra = p.getExtra();
+        tamano = p.getTamano();
+        int i = buscarProducto(nombre,extra,tamano);
         if (i != -1){
             lista_productos.remove(i);
         }
