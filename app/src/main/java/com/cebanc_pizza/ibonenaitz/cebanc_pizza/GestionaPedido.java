@@ -21,8 +21,8 @@ public class GestionaPedido {
             pAux = lista_productos.get(i);
             if (pAux.getExtra().equals(extra) && pAux.getTamaño().equals(tamaño)){
                 cantidad = pAux.getCantidad() + cantidad;
-                p = new Producto(pvp, cantidad, nombre, extra, tamaño);
-                lista_productos.set(i,p);
+                pAux.setCantidad(cantidad);
+                lista_productos.set(i,pAux);
             }else{
                 p = new Producto(pvp,cantidad,nombre,extra,tamaño);
                 lista_productos.add(p);
@@ -72,7 +72,7 @@ public class GestionaPedido {
                 if (p.getNombre().equals(nombre)){
                     indice = i;
                 }
-                if (indice != -1 && p.getExtra().equals(extra) && p.getTamaño().equals(tamaño)){
+                if (indice != -1 && p.getExtra().equals(extra) && p.getTamaño().equals(tamaño) && p.getNombre().equals(nombre)){
                     indice = i;
                 }
             }

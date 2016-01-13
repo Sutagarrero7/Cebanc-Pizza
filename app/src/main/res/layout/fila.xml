@@ -31,11 +31,10 @@
             android:id="@+id/nombre"
             android:textStyle="bold"
             android:textColor="#ffffff"
-            android:layout_marginLeft="44dp"
-            android:layout_marginStart="44dp"
-            android:layout_alignTop="@+id/cantidad"
+            android:layout_above="@+id/tamaño"
             android:layout_toRightOf="@+id/cantidad"
-            android:layout_toEndOf="@+id/cantidad" />
+            android:layout_toEndOf="@+id/cantidad"
+            android:layout_marginLeft="5dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -45,7 +44,7 @@
             android:id="@+id/cantidad"
             android:textStyle="bold"
             android:textColor="#ffffff"
-            android:layout_alignTop="@+id/iconLista"
+            android:layout_alignBottom="@+id/precio"
             android:layout_toRightOf="@+id/iconLista"
             android:layout_toEndOf="@+id/iconLista" />
 
@@ -58,8 +57,8 @@
             android:textColor="#ffffff"
             android:textSize="20dp"
             android:layout_alignBottom="@+id/iconLista"
-            android:layout_toRightOf="@+id/cantidad"
-            android:layout_toEndOf="@+id/cantidad" />
+            android:layout_alignLeft="@+id/cantidad"
+            android:layout_alignStart="@+id/cantidad" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -69,10 +68,9 @@
             android:id="@+id/extra"
             android:textColor="#ffffff"
             android:textSize="20dp"
-            android:layout_alignTop="@+id/tamaño"
+            android:layout_alignBottom="@+id/iconLista"
             android:layout_toRightOf="@+id/nombre"
-            android:layout_marginLeft="22dp"
-            android:layout_marginStart="22dp" />
+            android:layout_toEndOf="@+id/nombre" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,9 +80,8 @@
             android:id="@+id/precio"
             android:textColor="#ffffff"
             android:textSize="20dp"
-            android:layout_above="@+id/extra"
-            android:layout_toRightOf="@+id/extra"
-            android:layout_toEndOf="@+id/extra" />
+            android:layout_alignTop="@+id/nombre"
+            android:layout_centerHorizontal="true" />
 
     </RelativeLayout>
 
