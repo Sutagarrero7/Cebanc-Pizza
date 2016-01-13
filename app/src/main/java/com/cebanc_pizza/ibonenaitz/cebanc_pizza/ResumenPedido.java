@@ -17,10 +17,11 @@ public class ResumenPedido extends AppCompatActivity {
     ListView lista;
     ArrayList<Producto> arrProductos;
     Producto producto;
+    Persona client;
 
     String[] nombre,cantidad,extra,tamanio,precio;
     int[] imagenes_productos;
-    TextView lblPrecio;
+    TextView lblPrecio,lblNombre;
     Button btnFinalizar;
 
     @Override
@@ -29,13 +30,17 @@ public class ResumenPedido extends AppCompatActivity {
         setContentView(R.layout.activity_resumen_pedido);
         lista = (ListView)findViewById(R.id.lstProductos);
         arrProductos = new ArrayList<>();
+        client = GestionaPedido.getCliente();
         lblPrecio = (TextView)findViewById(R.id.lblPrecio);
+        lblNombre = (TextView)findViewById(R.id.lblNombre);
+        lblNombre.setText(client.getNombre()+", tu pedido:");
         btnFinalizar = (Button)findViewById(R.id.btnFinalizar);
         actualizarListaProductos();
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 finish();
+                                                System.exit(0);
                                             }
                                         }
 
