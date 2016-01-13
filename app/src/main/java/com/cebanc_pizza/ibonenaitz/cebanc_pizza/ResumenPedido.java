@@ -1,10 +1,12 @@
 package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 
 import android.app.Notification;
-import android.content.Intent;
-import android.content.res.Resources;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -58,7 +60,7 @@ public class ResumenPedido extends AppCompatActivity {
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-
+                                                notificacion();
                                             }
                                         }
 
@@ -141,6 +143,27 @@ public class ResumenPedido extends AppCompatActivity {
         ListaAdapter adapter = new ListaAdapter(this, nombre, imagenes_productos,cantidad,extra,tamanio,precio);
         lista.setAdapter(adapter);
         lblPrecio.setText(Double.toString(GestionaPedido.precioTotalPedido()));
+    }
+
+    public void notificacion() {
+        double p = GestionaPedido.precioTotalPedido();
+        CharSequence chapada = client.getNombre() + ", le informamos de que su pedido está camino a " + client.getDireccion();
+        if (p > 20 && p <=33){
+            chapada = chapada + ",por super";
+        }
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
+            .setSmallIcon(R.mipmap.ic_launcher)
+            .setContentTitle("Cebanc - Pizza")
+            .setContentText("Expanda esta notificacion")
+            .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
+            .setLights(Color.RED, 3000, 3000)
+            .setAutoCancel(true)
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(chapada));
+
+        // Construir la notificación y emitirla
+        NotificationManager notifyMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);;
+        notifyMgr.notify(1, builder.build());
     }
 
 }
