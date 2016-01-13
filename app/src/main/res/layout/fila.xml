@@ -80,11 +80,10 @@
             android:id="@+id/precio"
             android:textColor="#ffffff"
             android:textSize="20dp"
-            android:layout_alignBaseline="@+id/nombre"
-            android:layout_alignEnd="@+id/extra"
             android:layout_toRightOf="@+id/nombre"
-            android:layout_marginLeft="5dp"
-            android:layout_alignTop="@+id/iconLista" />
+            android:layout_toEndOf="@+id/nombre"
+            android:layout_alignTop="@+id/iconLista"
+            android:layout_marginLeft="8dp" />
 
     </RelativeLayout>
 
