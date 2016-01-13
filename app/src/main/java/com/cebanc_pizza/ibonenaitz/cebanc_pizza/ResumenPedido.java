@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -104,7 +105,7 @@ public class ResumenPedido extends AppCompatActivity {
             cantidad[i] = Integer.toString(producto.getCantidad());
             precio[i] = Double.toString(producto.getPrecio());
             extra[i] = producto.getExtra();
-            tamanio[i] = producto.getTamaño();
+            tamanio[i] = producto.getTamano();
             imagenes_productos[i] = getImagenProducto(producto.getNombre());
         }
         ListaAdapter adapter = new ListaAdapter(this, nombre, imagenes_productos,cantidad,extra,tamanio,precio);

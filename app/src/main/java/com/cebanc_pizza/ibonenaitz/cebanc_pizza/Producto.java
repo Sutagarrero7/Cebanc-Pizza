@@ -7,22 +7,22 @@ public class Producto {
 
     private int cantidad;
     private double precio;
-    private String nombre,extra,tamaño;
+    private String nombre,extra,tamano;
 
-    public String getTamaño() {
-        return tamaño;
+    public String getTamano() {
+        return tamano;
     }
 
-    public void setTamaño(String tamaño) {
-        this.tamaño = tamaño;
+    public void setTamano(String tamano) {
+        this.tamano = tamano;
     }
 
-    public Producto(double precio, int cantidad, String nombre, String extra,String tamaño) {
+    public Producto(double precio, int cantidad, String nombre, String extra,String tamano) {
         this.precio = precio;
         this.cantidad = cantidad;
         this.nombre = nombre;
         this.extra = extra;
-        this.tamaño = tamaño;
+        this.tamano = tamano;
 
     }
 
