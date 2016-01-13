@@ -1,6 +1,7 @@
 package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 
 import android.app.Notification;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,19 +34,21 @@ public class ResumenPedido extends AppCompatActivity {
         actualizarListaProductos();
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
-                                            public void onClick(View v) {System.exit(0);
+                                            public void onClick(View v) {
+                                                finish();
                                             }
                                         }
 
         );
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Producto p = new Producto(Double.parseDouble(precio[position]),Integer.parseInt(cantidad[position]),nombre[position],extra[position],tamanio[position]);
                 GestionaPedido.eliminarProducto(p);
+                Toast.makeText(getApplicationContext(), nombre[position], Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     private int getImagenProducto(String nombre) {

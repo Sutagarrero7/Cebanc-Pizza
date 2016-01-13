@@ -31,7 +31,10 @@ public class GestionaPedido {
     }
 
     public static void eliminarProducto(Producto p){
-        lista_productos.remove(p);
+        int i = buscarProductoExacto();
+        if (i != -1){
+            lista_productos.remove(i);
+        }
     }
 
     public static void borrarPedido(){
