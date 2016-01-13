@@ -81,4 +81,14 @@
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/btnFinalizar" />
 
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnBorrar_OnOff"
+        android:background="@drawable/borrar_off"
+        android:layout_alignTop="@+id/btnFinalizar"
+        android:layout_toRightOf="@+id/lblNombre"
+        android:layout_toEndOf="@+id/lblNombre" />
+
 </RelativeLayout>

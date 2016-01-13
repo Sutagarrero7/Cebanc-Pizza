@@ -2,6 +2,7 @@ package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 
 import android.app.Notification;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,7 +23,8 @@ public class ResumenPedido extends AppCompatActivity {
     String[] nombre,cantidad,extra,tamanio,precio;
     int[] imagenes_productos;
     TextView lblPrecio,lblNombre;
-    Button btnFinalizar;
+    Button btnFinalizar,btnBorrar;
+    Boolean bBorrar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,28 @@ public class ResumenPedido extends AppCompatActivity {
         lblNombre = (TextView)findViewById(R.id.lblNombre);
         lblNombre.setText(client.getNombre()+", tu pedido:");
         btnFinalizar = (Button)findViewById(R.id.btnFinalizar);
+        btnBorrar = (Button)findViewById(R.id.btnBorrar_OnOff);
+        btnBorrar.setBackgroundResource(R.drawable.borrar_off);
+        btnBorrar.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                if (bBorrar == false){
+                                                    bBorrar = true;
+                                                    btnBorrar.setBackgroundResource(R.drawable.borrar_on);
+
+                                                }else{
+                                                    bBorrar = false;
+                                                    btnBorrar.setBackgroundResource(R.drawable.borrar_off);
+                                                }
+                                            }
+                                        }
+
+        );
         actualizarListaProductos();
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                finish();
-                                                System.exit(0);
+
                                             }
                                         }
 
@@ -48,9 +66,13 @@ public class ResumenPedido extends AppCompatActivity {
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Producto p = new Producto(Double.parseDouble(precio[position]),Integer.parseInt(cantidad[position]),nombre[position],extra[position],tamanio[position]);
-                GestionaPedido.eliminarProducto(p);
-                actualizarListaProductos();
+                if (bBorrar == true) {
+                    Producto p = new Producto(Double.parseDouble(precio[position]), Integer.parseInt(cantidad[position]), nombre[position], extra[position], tamanio[position]);
+                    GestionaPedido.eliminarProducto(p);
+                    actualizarListaProductos();
+                }else{
+                    Toast.makeText(getApplicationContext(), "Activa la opcion borrar desde el boton", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
