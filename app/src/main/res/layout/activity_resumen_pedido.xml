@@ -70,7 +70,8 @@
         android:id="@+id/btnFinalizar"
         android:textSize="20dp"
         android:layout_above="@+id/lblTotal"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignRight="@+id/lblPrecio"
+        android:layout_alignEnd="@+id/lblPrecio" />
 
     <ListView
         android:layout_width="wrap_content"

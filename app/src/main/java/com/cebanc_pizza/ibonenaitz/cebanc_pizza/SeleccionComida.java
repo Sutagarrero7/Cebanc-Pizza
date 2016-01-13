@@ -44,8 +44,6 @@ public class SeleccionComida extends AppCompatActivity {
         img4q = (ImageView)findViewById(R.id.img4q);
         imgHawaiana = (ImageView)findViewById(R.id.imgHawaiana);
         imgSteakHouse = (ImageView)findViewById(R.id.imgSteakHouse);
-
-
         imgBaconCrispy.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
