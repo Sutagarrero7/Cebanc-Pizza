@@ -7,21 +7,23 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme" >
-        <activity android:name=".DatosCliente" >
+        android:theme="@style/AppTheme">
+        <activity android:name=".DatosCliente"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SeleccionProductos" >
+        <activity android:name=".SeleccionComida"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SeleccionComida" >
+        <activity android:name=".SeleccionBebida"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".SeleccionBebida" >
-        </activity>
-        <activity android:name=".ResumenPedido" >
+        <activity android:name=".ResumenPedido"
+            android:screenOrientation="portrait">
         </activity>
     </application>
 
