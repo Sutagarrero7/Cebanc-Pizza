@@ -161,7 +161,7 @@ public class ResumenPedido extends AppCompatActivity {
 
     public void notificacion() {
         double p = GestionaPedido.precioTotalPedido();
-        CharSequence chapada = client.getNombre() + ", le informamos de que su pedido está camino a " + client.getDireccion()+". El total del pedido son: "+Double.toString(producto.getPrecio())+" euros.";
+        CharSequence chapada = client.getNombre() + ", le informamos de que su pedido está camino a " + client.getDireccion()+". El total del pedido son: "+Double.toString(GestionaPedido.precioTotalPedido())+" euros.";
         if (p > 20 && p <=33){
             chapada = chapada + " Por ser un pedido superior a 20 euros te regalamos un peluche del muñeco de android.";
         }else if(p>33){
