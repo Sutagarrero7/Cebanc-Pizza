@@ -41,34 +41,34 @@ public class SeleccionBebida extends AppCompatActivity {
         imagen_sprite = (ImageView)findViewById(R.id.imgSprite);
 
         imagen_burn.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {abrirPopUp(v, "burn");
-                                            }
-                                        }
-        );
-        imagen_cocacola.setOnClickListener(new View.OnClickListener() {
                                            @Override
-                                           public void onClick(View v) {abrirPopUp(v, "cocacola");
+                                           public void onClick(View v) {abrirPopUp(v, "burn");
                                            }
                                        }
         );
-        imagen_cocacola_ligth.setOnClickListener(new View.OnClickListener() {
+        imagen_cocacola.setOnClickListener(new View.OnClickListener() {
                                                @Override
-                                               public void onClick(View v) {abrirPopUp(v, "cocacola_ligth");
+                                               public void onClick(View v) {abrirPopUp(v, "cocacola");
                                                }
                                            }
         );
-        imagen_cocacola_zero.setOnClickListener(new View.OnClickListener() {
+        imagen_cocacola_ligth.setOnClickListener(new View.OnClickListener() {
                                                      @Override
-                                                     public void onClick(View v) {abrirPopUp(v, "cocacola_zero");
+                                                     public void onClick(View v) {abrirPopUp(v, "cocacola_ligth");
                                                      }
                                                  }
         );
-        imagen_fanta_n.setOnClickListener(new View.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(View v) {abrirPopUp(v, "fanta_n");
-                                                        }
+        imagen_cocacola_zero.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View v) {abrirPopUp(v, "cocacola_zero");
                                                     }
+                                                }
+        );
+        imagen_fanta_n.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {abrirPopUp(v, "fanta_n");
+                                              }
+                                          }
         );
         imagen_fanta_l.setOnClickListener(new View.OnClickListener() {
                                               @Override
@@ -77,34 +77,34 @@ public class SeleccionBebida extends AppCompatActivity {
                                           }
         );
         imagen_mahou.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {abrirPopUp(v, "mahou");
-                                              }
-                                          }
-        );
-        imagen_mahou_sin.setOnClickListener(new View.OnClickListener() {
                                             @Override
-                                            public void onClick(View v) {abrirPopUp(v, "mahou_sin");
+                                            public void onClick(View v) {abrirPopUp(v, "mahou");
                                             }
                                         }
         );
-        imagen_nestea.setOnClickListener(new View.OnClickListener() {
+        imagen_mahou_sin.setOnClickListener(new View.OnClickListener() {
                                                 @Override
-                                                public void onClick(View v) {abrirPopUp(v, "nestea");
+                                                public void onClick(View v) {abrirPopUp(v, "mahou_sin");
                                                 }
                                             }
         );
-        imagen_redbull.setOnClickListener(new View.OnClickListener() {
+        imagen_nestea.setOnClickListener(new View.OnClickListener() {
                                              @Override
-                                             public void onClick(View v) {abrirPopUp(v, "redbull");
+                                             public void onClick(View v) {abrirPopUp(v, "nestea");
                                              }
                                          }
         );
+        imagen_redbull.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {abrirPopUp(v, "redbull");
+                                              }
+                                          }
+        );
         imagen_siete.setOnClickListener(new View.OnClickListener() {
-                                             @Override
-                                             public void onClick(View v) {abrirPopUp(v, "siete");
-                                             }
-                                         }
+                                            @Override
+                                            public void onClick(View v) {abrirPopUp(v, "siete");
+                                            }
+                                        }
         );
         imagen_sprite.setOnClickListener(new View.OnClickListener() {
                                              @Override
@@ -122,7 +122,7 @@ public class SeleccionBebida extends AppCompatActivity {
         );
     }
 
-
+    //Metodo que abre el PopUp de bebidas y asigna los valores para el mismo
     public void abrirPopUp(View v,String nombre){
         d = new Dialog(SeleccionBebida.this);
         d.setContentView(R.layout.popup_bebidas);
@@ -135,7 +135,7 @@ public class SeleccionBebida extends AppCompatActivity {
                 break;
             case "nestea":
                 precio.setText("Precio: 2.00€");
-               break;
+                break;
             case "mahou":
                 precio.setText("Precio: 1.90€");
                 break;
@@ -169,14 +169,14 @@ public class SeleccionBebida extends AppCompatActivity {
             }
         });
         aniadir.setOnClickListener(new ImageView.OnClickListener() {
-           @Override
-           public void onClick(View arg0) {
-               int c = Integer.parseInt(cant.getText().toString());
-               GestionaPedido.añadirProducto(nombre_class,c,precio.getText().toString(),"",tamanio);
-               d.dismiss();
-        }
+            @Override
+            public void onClick(View arg0) {
+                int c = Integer.parseInt(cant.getText().toString());
+                GestionaPedido.añadirProducto(nombre_class,c,precio.getText().toString(),"",tamanio);
+                d.dismiss();
+            }
 
-    });
+        });
         ImageView cancelar= (ImageView)d.findViewById(R.id.imgCancelar);
         cancelar.setOnClickListener(new ImageView.OnClickListener() {
             @Override
@@ -185,7 +185,7 @@ public class SeleccionBebida extends AppCompatActivity {
             }
 
         });
-    d.show();
+        d.show();
     }
 
 }

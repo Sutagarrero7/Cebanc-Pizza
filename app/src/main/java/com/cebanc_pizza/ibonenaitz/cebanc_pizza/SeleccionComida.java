@@ -56,11 +56,11 @@ public class SeleccionComida extends AppCompatActivity {
                                           }
         );
         imgEspecialCasa.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-                                                  abrirPopUp(v, "especial_casa");
-                                              }
-                                          }
+                                               @Override
+                                               public void onClick(View v) {
+                                                   abrirPopUp(v, "especial_casa");
+                                               }
+                                           }
         );
         imgPeperoni.setOnClickListener(new View.OnClickListener() {
                                            @Override
@@ -77,25 +77,25 @@ public class SeleccionComida extends AppCompatActivity {
                                  }
         );
         imgHawaiana.setOnClickListener(new View.OnClickListener() {
-                                               @Override
-                                               public void onClick(View v) {
-                                                   abrirPopUp(v, "hawaiana");
-                                               }
-                                           }
-        );
-        imgSteakHouse.setOnClickListener(new View.OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
-                                               abrirPopUp(v, "steak_house");
+                                               abrirPopUp(v, "hawaiana");
                                            }
                                        }
         );
+        imgSteakHouse.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {
+                                                 abrirPopUp(v, "steak_house");
+                                             }
+                                         }
+        );
         imgBarbacoa.setOnClickListener(new View.OnClickListener() {
-                                                             @Override
-                                                             public void onClick(View v) {
-                                                                 abrirPopUp(v, "barbacoa");
-                                                             }
-                                                         }
+                                           @Override
+                                           public void onClick(View v) {
+                                               abrirPopUp(v, "barbacoa");
+                                           }
+                                       }
         );
         imgFormagio.setOnClickListener(new View.OnClickListener() {
                                            @Override
@@ -105,18 +105,18 @@ public class SeleccionComida extends AppCompatActivity {
                                        }
         );
         imgJamonQueso.setOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View v) {
-                                               abrirPopUp(v, "jamon_queso");
-                                           }
-                                       }
-        );
-        imgCarbonara.setOnClickListener(new View.OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
-                                                 abrirPopUp(v, "carbonara");
+                                                 abrirPopUp(v, "jamon_queso");
                                              }
                                          }
+        );
+        imgCarbonara.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View v) {
+                                                abrirPopUp(v, "carbonara");
+                                            }
+                                        }
         );
 
 
@@ -130,7 +130,7 @@ public class SeleccionComida extends AppCompatActivity {
         );
     }
 
-
+    //Metodo que abre el PopUp de pizzas y asigna los valores para el mismo
     public void abrirPopUp(View v,String nombre){
         d = new Dialog(SeleccionComida.this);
         d.setContentView(R.layout.popup_comida);

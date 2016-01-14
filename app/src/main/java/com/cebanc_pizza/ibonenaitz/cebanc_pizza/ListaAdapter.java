@@ -8,9 +8,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-/**
- * Created by eni7 on 12/01/2016.
- */
 public class ListaAdapter extends BaseAdapter {
 
 

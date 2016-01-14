@@ -43,18 +43,18 @@ public class ResumenPedido extends AppCompatActivity {
         btnBorrar = (Button)findViewById(R.id.btnBorrar_OnOff);
         btnBorrar.setBackgroundResource(R.drawable.borrar_off);
         btnBorrar.setOnClickListener(new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View v) {
-                                                if (bBorrar == false){
-                                                    bBorrar = true;
-                                                    btnBorrar.setBackgroundResource(R.drawable.borrar_on);
+                                         @Override
+                                         public void onClick(View v) {
+                                             if (bBorrar == false){
+                                                 bBorrar = true;
+                                                 btnBorrar.setBackgroundResource(R.drawable.borrar_on);
 
-                                                }else{
-                                                    bBorrar = false;
-                                                    btnBorrar.setBackgroundResource(R.drawable.borrar_off);
-                                                }
-                                            }
-                                        }
+                                             }else{
+                                                 bBorrar = false;
+                                                 btnBorrar.setBackgroundResource(R.drawable.borrar_off);
+                                             }
+                                         }
+                                     }
 
         );
         actualizarListaProductos();
@@ -86,6 +86,7 @@ public class ResumenPedido extends AppCompatActivity {
 
     }
 
+    //Coge la imagen dependiendo del producto y la asigna para la miniatura del resumen de pedido
     private int getImagenProducto(String nombre) {
         switch (nombre) {
             case "siete":
@@ -137,6 +138,7 @@ public class ResumenPedido extends AppCompatActivity {
         }
     }
 
+    //Actualiza la lista del pedido de los productos seleccionados
     public void actualizarListaProductos(){
         arrProductos = GestionaPedido.todoPedido();
         nombre = new String[arrProductos.size()];
@@ -159,6 +161,7 @@ public class ResumenPedido extends AppCompatActivity {
         lblPrecio.setText(Double.toString(GestionaPedido.precioTotalPedido()));
     }
 
+    //Metodo que crea la notificacion
     public void notificacion() {
         double p = GestionaPedido.precioTotalPedido();
         CharSequence chapada = client.getNombre() + ", le informamos de que su pedido está camino a " + client.getDireccion()+". El total del pedido son: "+Double.toString(GestionaPedido.precioTotalPedido())+" euros.";
@@ -168,12 +171,12 @@ public class ResumenPedido extends AppCompatActivity {
             chapada = chapada + " Por ser un pedido superior a 33 euros te regalamos un peluche del muñeco de android y un vale para comer en el comedor de Cebanc.";
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
-            .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("Cebanc - Pizza")
-            .setContentText("Expanda esta notificacion")
-            .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
-            .setLights(Color.RED, 3000, 3000)
-            .setAutoCancel(true)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Cebanc - Pizza")
+                .setContentText("Expanda esta notificacion")
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
+                .setLights(Color.RED, 3000, 3000)
+                .setAutoCancel(true)
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(chapada));
 

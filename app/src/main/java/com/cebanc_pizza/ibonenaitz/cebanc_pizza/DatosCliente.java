@@ -39,9 +39,9 @@ public class DatosCliente extends AppCompatActivity {
                                                    nombre = (EditText) findViewById(R.id.edtNombre);
                                                    direccion = (EditText) findViewById(R.id.edtDireccion);
                                                    telefono = (EditText) findViewById(R.id.edtTelefono);
-                                                  if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() == 9) {
+                                                   if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() == 9) {
                                                        cliente = new Persona(Integer.parseInt(telefono.getText().toString()), nombre.getText().toString(), direccion.getText().toString());
-                                                      GestionaPedido.crearPedido(cliente);
+                                                       GestionaPedido.crearPedido(cliente);
                                                        Intent intent = new Intent(DatosCliente.this,SeleccionComida.class);
                                                        startActivity(intent);
                                                    } else {
