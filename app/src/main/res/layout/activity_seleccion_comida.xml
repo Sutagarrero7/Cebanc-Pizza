@@ -89,6 +89,46 @@
                 android:layout_column="1"
                 android:layout_toEndOf="@+id/img4q"
                 android:background="@drawable/pizza_steak_house" />
+            <ImageView
+                android:layout_width="@dimen/Medidas_Fotos"
+                android:layout_height="@dimen/Medidas_Fotos"
+                android:id="@+id/imgBarbacoa"
+                android:background="@drawable/pizza_bbq"
+                android:adjustViewBounds="false"
+                android:layout_row="3"
+                android:layout_column="0"
+                android:layout_below="@+id/imgEspecialCasa"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <ImageView
+                android:layout_width="@dimen/Medidas_Fotos"
+                android:layout_height="@dimen/Medidas_Fotos"
+                android:id="@+id/imgFormagio"
+                android:layout_below="@+id/img4q"
+                android:layout_toRightOf="@+id/imgBarbacoa"
+                android:layout_row="3"
+                android:layout_column="1"
+                android:background="@drawable/pizza_formagio" />
+            <ImageView
+                android:layout_width="@dimen/Medidas_Fotos"
+                android:layout_height="@dimen/Medidas_Fotos"
+                android:id="@+id/imgJamonQueso"
+                android:background="@drawable/pizza_jamon_queso"
+                android:adjustViewBounds="false"
+                android:layout_row="4"
+                android:layout_column="0"
+                android:layout_below="@+id/imgBarbacoa"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+            <ImageView
+                android:layout_width="@dimen/Medidas_Fotos"
+                android:layout_height="@dimen/Medidas_Fotos"
+                android:id="@+id/imgCarbonara"
+                android:layout_below="@+id/imgFormagio"
+                android:layout_toRightOf="@+id/imgJamonQueso"
+                android:layout_row="4"
+                android:layout_column="1"
+                android:background="@drawable/pizza_carbonara" />
         </GridLayout>
     </ScrollView>
 

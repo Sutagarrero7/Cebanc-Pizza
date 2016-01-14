@@ -3,6 +3,7 @@ package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,10 +62,15 @@ public class ResumenPedido extends AppCompatActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 notificacion();
+                                                //finish();
+                                                Intent intent = new Intent(getApplicationContext(), DatosCliente.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(intent);
                                             }
                                         }
 
         );
+
         lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -118,6 +124,14 @@ public class ResumenPedido extends AppCompatActivity {
                 return R.drawable.pizza_peperoni;
             case "4_quesos":
                 return R.drawable.pizza_4q;
+            case "barbacoa":
+                return R.drawable.pizza_bbq;
+            case "formagio":
+                return R.drawable.pizza_formagio;
+            case "jamon_queso":
+                return R.drawable.pizza_jamon_queso;
+            case "carbonara":
+                return R.drawable.pizza_carbonara;
             default:
                 return 0;
         }
@@ -147,9 +161,11 @@ public class ResumenPedido extends AppCompatActivity {
 
     public void notificacion() {
         double p = GestionaPedido.precioTotalPedido();
-        CharSequence chapada = client.getNombre() + ", le informamos de que su pedido está camino a " + client.getDireccion();
+        CharSequence chapada = client.getNombre() + ", le informamos de que su pedido está camino a " + client.getDireccion()+". El total del pedido son: "+Double.toString(producto.getPrecio())+" euros.";
         if (p > 20 && p <=33){
-            chapada = chapada + ",por super";
+            chapada = chapada + " Por ser un pedido superior a 20 euros te regalamos un peluche del muñeco de android.";
+        }else if(p>33){
+            chapada = chapada + " Por ser un pedido superior a 33 euros te regalamos un peluche del muñeco de android y un vale para comer en el comedor de Cebanc.";
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
             .setSmallIcon(R.mipmap.ic_launcher)
@@ -165,5 +181,6 @@ public class ResumenPedido extends AppCompatActivity {
         NotificationManager notifyMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);;
         notifyMgr.notify(1, builder.build());
     }
+
 
 }

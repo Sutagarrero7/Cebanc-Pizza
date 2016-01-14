@@ -29,7 +29,7 @@ public class SeleccionComida extends AppCompatActivity {
     TextView precio,cant;
     Dialog d;
     ArrayList<Producto> lista_productos;
-    ImageView imgBaconCrispy,imgEspecialCasa,imgPeperoni,img4q,imgHawaiana,imgSteakHouse;
+    ImageView imgBaconCrispy,imgEspecialCasa,imgPeperoni,img4q,imgHawaiana,imgSteakHouse,imgBarbacoa,imgFormagio,imgJamonQueso,imgCarbonara;
     Button btnContinuar_Comida;
     Spinner spinner,spinner2;
 
@@ -44,12 +44,16 @@ public class SeleccionComida extends AppCompatActivity {
         img4q = (ImageView)findViewById(R.id.img4q);
         imgHawaiana = (ImageView)findViewById(R.id.imgHawaiana);
         imgSteakHouse = (ImageView)findViewById(R.id.imgSteakHouse);
+        imgBarbacoa = (ImageView)findViewById(R.id.imgBarbacoa);
+        imgFormagio = (ImageView)findViewById(R.id.imgFormagio);
+        imgJamonQueso = (ImageView)findViewById(R.id.imgJamonQueso);
+        imgCarbonara = (ImageView)findViewById(R.id.imgCarbonara);
         imgBaconCrispy.setOnClickListener(new View.OnClickListener() {
-                                           @Override
-                                           public void onClick(View v) {
-                                               abrirPopUp(v, "bacon_crispy");
-                                           }
-                                       }
+                                              @Override
+                                              public void onClick(View v) {
+                                                  abrirPopUp(v, "bacon_crispy");
+                                              }
+                                          }
         );
         imgEspecialCasa.setOnClickListener(new View.OnClickListener() {
                                               @Override
@@ -59,18 +63,18 @@ public class SeleccionComida extends AppCompatActivity {
                                           }
         );
         imgPeperoni.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-                                                  abrirPopUp(v, "peperoni");
-                                              }
-                                          }
+                                           @Override
+                                           public void onClick(View v) {
+                                               abrirPopUp(v, "peperoni");
+                                           }
+                                       }
         );
         img4q.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-                                                  abrirPopUp(v, "4_quesos");
-                                              }
-                                          }
+                                     @Override
+                                     public void onClick(View v) {
+                                         abrirPopUp(v, "4_quesos");
+                                     }
+                                 }
         );
         imgHawaiana.setOnClickListener(new View.OnClickListener() {
                                                @Override
@@ -86,15 +90,43 @@ public class SeleccionComida extends AppCompatActivity {
                                            }
                                        }
         );
+        imgBarbacoa.setOnClickListener(new View.OnClickListener() {
+                                                             @Override
+                                                             public void onClick(View v) {
+                                                                 abrirPopUp(v, "barbacoa");
+                                                             }
+                                                         }
+        );
+        imgFormagio.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+                                               abrirPopUp(v, "formagio");
+                                           }
+                                       }
+        );
+        imgJamonQueso.setOnClickListener(new View.OnClickListener() {
+                                           @Override
+                                           public void onClick(View v) {
+                                               abrirPopUp(v, "jamon_queso");
+                                           }
+                                       }
+        );
+        imgCarbonara.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View v) {
+                                                 abrirPopUp(v, "carbonara");
+                                             }
+                                         }
+        );
 
 
         btnContinuar_Comida.setOnClickListener(new View.OnClickListener() {
-                                                    @Override
-                                                    public void onClick(View v) {
-                                                        Intent intent = new Intent(SeleccionComida.this,SeleccionBebida.class);
-                                                        startActivity(intent);
-                                                    }
-                                                }
+                                                   @Override
+                                                   public void onClick(View v) {
+                                                       Intent intent = new Intent(SeleccionComida.this, SeleccionBebida.class);
+                                                       startActivity(intent);
+                                                   }
+                                               }
         );
     }
 
@@ -124,6 +156,18 @@ public class SeleccionComida extends AppCompatActivity {
             case "4_quesos":
                 precio.setText("Precio: 17.95€");
                 break;
+            case "carbonara":
+                precio.setText("Precio: 15.95€");
+                break;
+            case "jamon_queso":
+                precio.setText("Precio: 12.95€");
+                break;
+            case "barbacoa":
+                precio.setText("Precio: 18.95€");
+                break;
+            case "formagio":
+                precio.setText("Precio: 18.95€");
+                break;
             default:
                 precio.setText("Precio: 14.95€");
                 break;
@@ -135,31 +179,27 @@ public class SeleccionComida extends AppCompatActivity {
         spinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valores));
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
-            {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 tamanio = spinner.getSelectedItem().toString();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> parent) {
                 // vacio
 
             }
         });
         spinner2 = (Spinner) d.findViewById(R.id.cmbExtra);
-        String[] valores2 = {"Ninguno","Extra queso","Extra Salsa"};
+        String[] valores2 = {"Fina","Clasica","Rellena de queso"};
         spinner2.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, valores2));
         spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
-            {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 extra = spinner2.getSelectedItem().toString();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parent)
-            {
+            public void onNothingSelected(AdapterView<?> parent) {
                 // vacio
 
             }
