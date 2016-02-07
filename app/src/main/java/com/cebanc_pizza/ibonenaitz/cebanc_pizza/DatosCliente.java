@@ -12,15 +12,16 @@ import android.widget.Toast;
 
 public class DatosCliente extends AppCompatActivity {
 
-    private EditText nombre;
-    private EditText direccion;
-    private EditText telefono;
+    private EditText usuario;
+    private EditText pass;
     public Persona cliente;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_datos_cliente);
+        GestionaPedido.startBBDD(getApplicationContext());
+
 
         // Botón de salida (final de la aplicación)
         final ImageView boton_salida = (ImageView) findViewById(R.id.imgAniadir);
@@ -36,20 +37,24 @@ public class DatosCliente extends AppCompatActivity {
         boton_continuar.setOnClickListener(new OnClickListener() {
                                                @Override
                                                public void onClick(View v) {
-                                                   nombre = (EditText) findViewById(R.id.edtNombre);
-                                                   direccion = (EditText) findViewById(R.id.edtDireccion);
-                                                   telefono = (EditText) findViewById(R.id.edtTelefono);
-                                                   if (!nombre.getText().toString().equals("") && !direccion.getText().toString().equals("") && telefono.getText().length() == 9) {
-                                                       cliente = new Persona(Integer.parseInt(telefono.getText().toString()), nombre.getText().toString(), direccion.getText().toString());
-                                                       GestionaPedido.crearPedido(cliente);
-                                                       Intent intent = new Intent(DatosCliente.this,SeleccionComida.class);
-                                                       startActivity(intent);
+                                                   usuario = (EditText) findViewById(R.id.edtUsuario);
+                                                   pass = (EditText) findViewById(R.id.edtPwd);
+                                                   if (!usuario.getText().toString().equals("") && !pass.getText().toString().equals("")) {
+                                                       if (GestionaPedido.iniciarSesion(usuario.getText().toString().toUpperCase(), pass.getText().toString())) {
+                                                          // cliente = new Persona(Integer.parseInt(telefono.getText().toString()), nombre.getText().toString(), direccion.getText().toString());
+                                                           GestionaPedido.crearPedido(cliente);
+                                                           Intent intent = new Intent(DatosCliente.this,SeleccionComida.class);
+                                                           startActivity(intent);
+                                                       } else {
+                                                           Toast.makeText(getApplicationContext(), "Datos no validos, intentalo de nuevo", Toast.LENGTH_SHORT).show();
+                                                       }
                                                    } else {
                                                        Toast.makeText(getApplicationContext(), "Datos no validos, intentalo de nuevo", Toast.LENGTH_SHORT).show();
                                                    }
 
                                                }
                                            }
+
         );}
 
 }

@@ -1,7 +1,11 @@
 package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
+import java.sql.SQLData;
 import java.util.ArrayList;
 
 public class GestionaPedido {
@@ -9,7 +13,24 @@ public class GestionaPedido {
     static Persona cliente;
     static Producto p;
     static Producto pAux;
+    static Store bbdd;
+    static SQLiteDatabase db;
 
+    public static void startBBDD(Context c){
+        //Crear o instanciar BBDD
+        bbdd = new Store(c);
+        db = bbdd.getReadableDatabase();
+    }
+
+    public static boolean iniciarSesion(String usr,String pwd){
+        boolean ok = false;
+        String sql = "SELECT * FROM Usuarios WHERE UPPER(Usuario) = ? AND Pass = ?";
+        Cursor c = db.rawQuery(sql,new String[]{usr,pwd});
+        if (c.getCount() > 0){
+            ok = true;
+        }
+        return ok;
+    }
     //Metodo que añade a un array de objeto (Producto) cada producto que seleccione el usuario
     public static void añadirProducto(String nombre, int cantidad, String precio,String extra,String tamano){
         int i = buscarProducto(nombre,extra,tamano);
