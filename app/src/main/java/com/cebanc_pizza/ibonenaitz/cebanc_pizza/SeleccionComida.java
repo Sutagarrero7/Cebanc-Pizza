@@ -48,70 +48,70 @@ public class SeleccionComida extends AppCompatActivity {
         imgFormagio = (ImageView)findViewById(R.id.imgFormagio);
         imgJamonQueso = (ImageView)findViewById(R.id.imgJamonQueso);
         imgCarbonara = (ImageView)findViewById(R.id.imgCarbonara);
-        imgBaconCrispy.setOnClickListener(new View.OnClickListener() {
+        imgBaconCrispy.setOnClickListener(new OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
                                                   abrirPopUp(v, "bacon_crispy");
                                               }
                                           }
         );
-        imgEspecialCasa.setOnClickListener(new View.OnClickListener() {
+        imgEspecialCasa.setOnClickListener(new OnClickListener() {
                                                @Override
                                                public void onClick(View v) {
                                                    abrirPopUp(v, "especial_casa");
                                                }
                                            }
         );
-        imgPeperoni.setOnClickListener(new View.OnClickListener() {
+        imgPeperoni.setOnClickListener(new OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
                                                abrirPopUp(v, "peperoni");
                                            }
                                        }
         );
-        img4q.setOnClickListener(new View.OnClickListener() {
+        img4q.setOnClickListener(new OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
                                          abrirPopUp(v, "4_quesos");
                                      }
                                  }
         );
-        imgHawaiana.setOnClickListener(new View.OnClickListener() {
+        imgHawaiana.setOnClickListener(new OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
                                                abrirPopUp(v, "hawaiana");
                                            }
                                        }
         );
-        imgSteakHouse.setOnClickListener(new View.OnClickListener() {
+        imgSteakHouse.setOnClickListener(new OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
                                                  abrirPopUp(v, "steak_house");
                                              }
                                          }
         );
-        imgBarbacoa.setOnClickListener(new View.OnClickListener() {
+        imgBarbacoa.setOnClickListener(new OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
                                                abrirPopUp(v, "barbacoa");
                                            }
                                        }
         );
-        imgFormagio.setOnClickListener(new View.OnClickListener() {
+        imgFormagio.setOnClickListener(new OnClickListener() {
                                            @Override
                                            public void onClick(View v) {
                                                abrirPopUp(v, "formagio");
                                            }
                                        }
         );
-        imgJamonQueso.setOnClickListener(new View.OnClickListener() {
+        imgJamonQueso.setOnClickListener(new OnClickListener() {
                                              @Override
                                              public void onClick(View v) {
                                                  abrirPopUp(v, "jamon_queso");
                                              }
                                          }
         );
-        imgCarbonara.setOnClickListener(new View.OnClickListener() {
+        imgCarbonara.setOnClickListener(new OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
                                                 abrirPopUp(v, "carbonara");
@@ -120,7 +120,7 @@ public class SeleccionComida extends AppCompatActivity {
         );
 
 
-        btnContinuar_Comida.setOnClickListener(new View.OnClickListener() {
+        btnContinuar_Comida.setOnClickListener(new OnClickListener() {
                                                    @Override
                                                    public void onClick(View v) {
                                                        Intent intent = new Intent(SeleccionComida.this, SeleccionBebida.class);
