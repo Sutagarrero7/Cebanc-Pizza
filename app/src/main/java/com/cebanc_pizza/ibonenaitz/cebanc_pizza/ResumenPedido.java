@@ -35,7 +35,7 @@ public class ResumenPedido extends AppCompatActivity {
         setContentView(R.layout.activity_resumen_pedido);
         lista = (ListView)findViewById(R.id.lstProductos);
         arrProductos = new ArrayList<>();
-        client = GestionaPedido.getCliente();
+        //client = GestionaPedido.getCliente();
         lblPrecio = (TextView)findViewById(R.id.lblPrecio);
         lblNombre = (TextView)findViewById(R.id.lblNombre);
         lblNombre.setText(client.getNombre()+", tu pedido:");

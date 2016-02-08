@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content" android:layout_height="wrap_content"
+    android:background="#e60d12"
+    android:orientation="vertical">
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnRegistrarse"
+        android:text="Registrarse"
+        android:background="#ffffff"
+        android:layout_marginTop="41dp"
+        android:layout_below="@+id/edtTlf"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="true" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgCancelar"
+        android:background="@drawable/cancelar"
+        android:layout_alignTop="@+id/btnRegistrarse"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:clickable="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nuevo Usuario"
+        android:id="@+id/lblPrecio"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtNombre"
+        android:layout_below="@+id/lblPrecio"
+        android:layout_centerHorizontal="true"
+        android:hint="Nombre"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtUsuario"
+        android:layout_below="@+id/edtNombre"
+        android:layout_centerHorizontal="true"
+        android:hint="Usuario"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/edtPass"
+        android:hint="Contraseña"
+        android:layout_below="@+id/edtUsuario"
+        android:layout_centerHorizontal="true"
+        android:inputType="textPassword"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/edtDireccion"
+        android:hint="Direccion"
+        android:layout_below="@+id/edtPass"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/edtTlf"
+        android:hint="Telefono"
+        android:layout_below="@+id/edtDireccion"
+        android:layout_centerHorizontal="true"
+        android:inputType="phone"
+        android:textColor="#ffffff" />
+
+
+</RelativeLayout>

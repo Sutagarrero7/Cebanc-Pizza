@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class Store extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "CebancPizza";
-    private static final int SCHEME_VERSION = 2;
+    private static final int SCHEME_VERSION = 3;
     private SQLiteDatabase db;
 
     public Store(Context context) {
@@ -20,11 +20,28 @@ public class Store extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL("create table Usuarios(" +
                 "UsuarioID integer primary key autoincrement," +
                 "Usuario text not null," +
+                "Nombre text null," +
+                "Direccion text null," +
+                "Telefono text null," +
                 "Pass text not null)");
-        db.execSQL("INSERT INTO Usuarios VALUES ('Admin','1234')");
+
+        db.execSQL("create table PedidoCabecera(" +
+                "PedidoCabeceraID integer primary key autoincrement," +
+                "UsuarioID integer not null)");
+
+        db.execSQL("create table PedidoLinea(" +
+                "PedidoLineaID integer primary key autoincrement," +
+                "PedidoCabeceraID integer not null," +
+                "Cantidad integer not null," +
+                "Extra text not null," +
+                "Precio decimal not null," +
+                "NombreArticulo text not null)");
+
+        db.execSQL("INSERT INTO Usuarios(Usuario,pass) VALUES ('Admin','1234')");
     }
 
     @Override

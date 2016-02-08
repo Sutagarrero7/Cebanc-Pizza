@@ -10,12 +10,15 @@ import java.util.ArrayList;
 
 public class GestionaPedido {
     static ArrayList<Producto> lista_productos;
-    static Persona cliente;
+    static int usuarioID;
     static Producto p;
     static Producto pAux;
     static Store bbdd;
     static SQLiteDatabase db;
 
+    public static void aniadirUsuario(String nombre_pop,String usuario_pop,String pass_pop,String direccion_pop,String tlf_pop) {
+        db.execSQL("INSERT INTO Usuarios(Nombre,Usuario,Pass,Direccion,Telefono) VALUES ('"+nombre_pop+"','"+usuario_pop+"','"+pass_pop+"','"+direccion_pop+"','"+tlf_pop+"')");
+    }
     public static void startBBDD(Context c){
         //Crear o instanciar BBDD
         bbdd = new Store(c);
@@ -27,8 +30,11 @@ public class GestionaPedido {
         String sql = "SELECT * FROM Usuarios WHERE UPPER(Usuario) = ? AND Pass = ?";
         Cursor c = db.rawQuery(sql,new String[]{usr,pwd});
         if (c.getCount() > 0){
+            c.moveToFirst();
             ok = true;
+            usuarioID = c.getInt(0);
         }
+
         return ok;
     }
     //Metodo que añade a un array de objeto (Producto) cada producto que seleccione el usuario
@@ -69,13 +75,12 @@ public class GestionaPedido {
     }
 
     //Asigna el cliente al objeto Persona
-    public static void crearPedido(Persona pers){
-        cliente = pers;
+    public static void crearPedido(){
         lista_productos = new ArrayList<Producto>();
     }
 
-    public static Persona getCliente() {
-        return cliente;
+    public static int getCliente() {
+        return usuarioID;
     }
 
     //Devuelve el precio total del pedido
