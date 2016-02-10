@@ -26,7 +26,7 @@ public class ResumenPedido extends AppCompatActivity {
     String[] nombre,cantidad,extra,tamanio,precio;
     int[] imagenes_productos;
     TextView lblPrecio,lblNombre;
-    Button btnFinalizar,btnBorrar;
+    Button btnFinalizar,btnBorrar,btnInfo;
     Boolean bBorrar = false;
 
     @Override
@@ -42,6 +42,7 @@ public class ResumenPedido extends AppCompatActivity {
         btnFinalizar = (Button)findViewById(R.id.btnFinalizar);
         btnBorrar = (Button)findViewById(R.id.btnBorrar_OnOff);
         btnBorrar.setBackgroundResource(R.drawable.borrar_off);
+        btnInfo=(Button)findViewById(R.id.btnInfo);
         btnBorrar.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
@@ -57,10 +58,19 @@ public class ResumenPedido extends AppCompatActivity {
                                      }
 
         );
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+                                         @Override
+                                         public void onClick(View v) {
+
+                                         }
+                                     }
+
+        );
         actualizarListaProductos();
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
+                                                GestionaPedido.insertaPedido();
                                                 notificacion();
                                                 //finish();
                                                 Intent intent = new Intent(getApplicationContext(), DatosCliente.class);

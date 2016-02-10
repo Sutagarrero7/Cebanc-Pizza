@@ -90,5 +90,13 @@
         android:layout_above="@+id/lblEuro"
         android:layout_toRightOf="@+id/lblEuro"
         android:layout_toEndOf="@+id/lblEuro" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnInfo"
+        android:layout_above="@+id/lblEuro"
+        android:layout_below="@+id/lstProductos"
+        android:layout_toRightOf="@+id/btnBorrar_OnOff"
+        android:layout_toEndOf="@+id/btnBorrar_OnOff" />
 
 </RelativeLayout>

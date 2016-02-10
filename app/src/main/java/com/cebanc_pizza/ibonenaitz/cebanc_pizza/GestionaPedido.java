@@ -13,9 +13,11 @@ public class GestionaPedido {
     static int usuarioID;
     static Producto p;
     static Producto pAux;
+    static Producto prod;
     static Store bbdd;
     static SQLiteDatabase db;
     static Persona pers;
+    static ArrayList<Producto> arrProductos;
     public static void aniadirUsuario(String nombre_pop,String usuario_pop,String pass_pop,String direccion_pop,String tlf_pop) {
         db.execSQL("INSERT INTO Usuarios(Nombre,Usuario,Pass,Direccion,Telefono) VALUES ('"+nombre_pop+"','"+usuario_pop+"','"+pass_pop+"','"+direccion_pop+"','"+tlf_pop+"')");
     }
@@ -64,7 +66,7 @@ public class GestionaPedido {
         nombre = p.getNombre();
         extra = p.getExtra();
         tamano = p.getTamano();
-        int i = buscarProducto(nombre,extra,tamano);
+        int i = buscarProducto(nombre, extra, tamano);
         if (i != -1){
             lista_productos.remove(i);
         }
@@ -88,6 +90,18 @@ public class GestionaPedido {
 
         }
         return pers;
+    }
+
+    public static void insertaPedido(){
+        arrProductos = GestionaPedido.todoPedido();
+        for (int i = 0; i < arrProductos.size(); i++) {
+            String sql = "INSERT INTO PedidoLinea (Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?)";
+            Cursor c = db.rawQuery(sql,new String[]{Integer.toString(prod.getCantidad()),prod.getExtra(),Double.toString(prod.getPrecio()),prod.getNombre()});
+            if (c.getCount() > 0){
+                c.moveToFirst();
+                pers=new Persona(Integer.parseInt(c.getString(4)),c.getString(2),c.getString(3));
+            }
+        }
     }
 
     //Devuelve el precio total del pedido
