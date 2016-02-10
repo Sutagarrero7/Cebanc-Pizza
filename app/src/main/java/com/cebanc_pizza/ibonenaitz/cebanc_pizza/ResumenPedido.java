@@ -70,12 +70,16 @@ public class ResumenPedido extends AppCompatActivity {
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                GestionaPedido.insertaPedido();
-                                                notificacion();
-                                                //finish();
-                                                Intent intent = new Intent(getApplicationContext(), DatosCliente.class);
-                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                startActivity(intent);
+                                                boolean ok = GestionaPedido.insertaPedido();
+                                                if (ok) {
+                                                    notificacion();
+                                                    //finish();
+                                                    Intent intent = new Intent(getApplicationContext(), DatosCliente.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    startActivity(intent);
+                                                }else{
+                                                    Toast.makeText(getApplicationContext(), "Ups... No se ha podido guardar tu pedido", Toast.LENGTH_SHORT).show();
+                                                }
                                             }
                                         }
 

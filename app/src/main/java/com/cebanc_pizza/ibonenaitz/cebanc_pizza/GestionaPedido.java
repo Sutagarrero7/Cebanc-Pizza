@@ -30,7 +30,7 @@ public class GestionaPedido {
     public static boolean iniciarSesion(String usr,String pwd){
         boolean ok = false;
         String sql = "SELECT * FROM Usuarios WHERE UPPER(Usuario) = ? AND Pass = ?";
-        Cursor c = db.rawQuery(sql,new String[]{usr,pwd});
+        Cursor c = db.rawQuery(sql, new String[]{usr, pwd});
         if (c.getCount() > 0){
             c.moveToFirst();
             ok = true;
@@ -92,15 +92,24 @@ public class GestionaPedido {
         return pers;
     }
 
-    public static void insertaPedido(){
-        arrProductos = GestionaPedido.todoPedido();
-        for (int i = 0; i < arrProductos.size(); i++) {
-            String sql = "INSERT INTO PedidoLinea (Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?)";
-            Cursor c = db.rawQuery(sql,new String[]{Integer.toString(prod.getCantidad()),prod.getExtra(),Double.toString(prod.getPrecio()),prod.getNombre()});
-            if (c.getCount() > 0){
-                c.moveToFirst();
-                pers=new Persona(Integer.parseInt(c.getString(4)),c.getString(2),c.getString(3));
+    public static boolean insertaPedido(){
+        //Insertar cabecera
+        int pedidocabeceraid;
+        String sql = "INSERT INTO PedidoCabecera (FechaHoraPedido,UsuarioID) VALUES (datetime(),?)";
+        db.rawQuery(sql,new String[]{Integer.toString(usuarioID)});
+        Cursor c = db.rawQuery("SELECT * FROM PedidoCabecera WHERE PedidoCabeceraID = (SELECT MAX(PedidoCabeceraID) FROM PedidoCabecera",null);
+        if (c.getCount() > 0){
+            c.moveToFirst();
+            pedidocabeceraid = c.getInt(0);
+            //Insertar lineas
+            for (int i = 0; i < arrProductos.size(); i++) {
+                prod = arrProductos.get(i);
+                sql = "INSERT INTO PedidoLinea (PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?)";
+                db.rawQuery(sql,new String[]{Integer.toString(pedidocabeceraid),Integer.toString(prod.getCantidad()),prod.getExtra(),Double.toString(prod.getPrecio()),prod.getNombre()});
             }
+            return true;
+        }else{
+            return false;
         }
     }
 
