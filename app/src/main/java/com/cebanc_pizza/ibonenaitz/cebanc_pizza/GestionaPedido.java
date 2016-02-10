@@ -107,7 +107,6 @@ public class GestionaPedido {
                 prod = lista_productos.get(i);
                 sql = "INSERT INTO PedidoLinea(PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?,?)";
                 db.rawQuery(sql,new String[]{Integer.toString(pedidocabeceraid),Integer.toString(prod.getCantidad()),prod.getExtra(),Double.toString(prod.getPrecio()),prod.getNombre()});
-                return true;
             }
             return true;
         }else{
