@@ -106,7 +106,7 @@ public class DatosCliente extends AppCompatActivity {
         registrarse.setOnClickListener(new ImageView.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                String var_nombre = nombre_pop.getText().toString();
+                String var_nombre = nombre_pop.getText().toString().trim();
                 String var_usuario = usuario_pop.getText().toString();
                 String var_pass = pass_pop.getText().toString();
                 String var_dir = direccion_pop.getText().toString();
