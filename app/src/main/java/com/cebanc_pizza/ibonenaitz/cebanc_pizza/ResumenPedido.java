@@ -38,7 +38,7 @@ public class ResumenPedido extends AppCompatActivity {
         //client = GestionaPedido.getCliente();
         lblPrecio = (TextView)findViewById(R.id.lblPrecio);
         lblNombre = (TextView)findViewById(R.id.lblNombre);
-        lblNombre.setText(client.getNombre()+", tu pedido:");
+        //lblNombre.setText(client.getNombre()+", tu pedido:");
         btnFinalizar = (Button)findViewById(R.id.btnFinalizar);
         btnBorrar = (Button)findViewById(R.id.btnBorrar_OnOff);
         btnBorrar.setBackgroundResource(R.drawable.borrar_off);

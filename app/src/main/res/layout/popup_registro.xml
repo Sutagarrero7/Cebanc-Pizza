@@ -91,7 +91,8 @@
         android:layout_below="@+id/edtDireccion"
         android:layout_centerHorizontal="true"
         android:inputType="phone"
-        android:textColor="#ffffff" />
+        android:textColor="#ffffff"
+        android:maxLength="9" />
 
 
 </RelativeLayout>
