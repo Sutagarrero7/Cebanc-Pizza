@@ -15,7 +15,7 @@ public class GestionaPedido {
     static Producto pAux;
     static Store bbdd;
     static SQLiteDatabase db;
-
+    static Persona pers;
     public static void aniadirUsuario(String nombre_pop,String usuario_pop,String pass_pop,String direccion_pop,String tlf_pop) {
         db.execSQL("INSERT INTO Usuarios(Nombre,Usuario,Pass,Direccion,Telefono) VALUES ('"+nombre_pop+"','"+usuario_pop+"','"+pass_pop+"','"+direccion_pop+"','"+tlf_pop+"')");
     }
@@ -79,8 +79,15 @@ public class GestionaPedido {
         lista_productos = new ArrayList<Producto>();
     }
 
-    public static int getCliente() {
-        return usuarioID;
+    public static Persona getCliente() {
+        String sql = "SELECT * FROM Usuarios WHERE UsuarioID = ?";
+        Cursor c = db.rawQuery(sql,new String[]{Integer.toString(usuarioID)});
+        if (c.getCount() > 0){
+            c.moveToFirst();
+            pers=new Persona(Integer.parseInt(c.getString(4)),c.getString(2),c.getString(3));
+
+        }
+        return pers;
     }
 
     //Devuelve el precio total del pedido

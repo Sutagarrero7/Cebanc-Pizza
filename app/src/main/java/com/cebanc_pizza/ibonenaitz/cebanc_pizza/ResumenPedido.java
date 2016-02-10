@@ -38,7 +38,7 @@ public class ResumenPedido extends AppCompatActivity {
         //client = GestionaPedido.getCliente();
         lblPrecio = (TextView)findViewById(R.id.lblPrecio);
         lblNombre = (TextView)findViewById(R.id.lblNombre);
-        //lblNombre.setText(client.getNombre()+", tu pedido:");
+        lblNombre.setText(GestionaPedido.getCliente().getNombre()+", tu pedido:");
         btnFinalizar = (Button)findViewById(R.id.btnFinalizar);
         btnBorrar = (Button)findViewById(R.id.btnBorrar_OnOff);
         btnBorrar.setBackgroundResource(R.drawable.borrar_off);
@@ -164,7 +164,7 @@ public class ResumenPedido extends AppCompatActivity {
     //Metodo que crea la notificacion
     public void notificacion() {
         double p = GestionaPedido.precioTotalPedido();
-        CharSequence chapada = client.getNombre() + ", le informamos de que su pedido está camino a " + client.getDireccion()+". El total del pedido son: "+Double.toString(GestionaPedido.precioTotalPedido())+" euros.";
+        CharSequence chapada = GestionaPedido.getCliente().getNombre() + ", le informamos de que su pedido está camino a " + GestionaPedido.getCliente().getDireccion()+". El total del pedido son: "+Double.toString(GestionaPedido.precioTotalPedido())+" euros.";
         if (p > 20 && p <=33){
             chapada = chapada + " Por ser un pedido superior a 20 euros te regalamos un peluche del muñeco de android.";
         }else if(p>33){
