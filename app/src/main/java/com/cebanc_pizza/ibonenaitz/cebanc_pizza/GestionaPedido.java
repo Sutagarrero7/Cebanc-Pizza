@@ -17,7 +17,6 @@ public class GestionaPedido {
     static Store bbdd;
     static SQLiteDatabase db;
     static Persona pers;
-    static ArrayList<Producto> arrProductos;
     public static void aniadirUsuario(String nombre_pop,String usuario_pop,String pass_pop,String direccion_pop,String tlf_pop) {
         db.execSQL("INSERT INTO Usuarios(Nombre,Usuario,Pass,Direccion,Telefono) VALUES ('"+nombre_pop+"','"+usuario_pop+"','"+pass_pop+"','"+direccion_pop+"','"+tlf_pop+"')");
     }
@@ -95,21 +94,24 @@ public class GestionaPedido {
     public static boolean insertaPedido(){
         //Insertar cabecera
         int pedidocabeceraid;
-        String sql = "INSERT INTO PedidoCabecera (FechaHoraPedido,UsuarioID) VALUES (datetime(),?)";
-        db.rawQuery(sql,new String[]{Integer.toString(usuarioID)});
-        Cursor c = db.rawQuery("SELECT PedidoCabeceraID FROM PedidoCabecera WHERE PedidoCabeceraID = (SELECT MAX(PedidoCabeceraID) FROM PedidoCabecera)",null);
-        if (c.getCount() > 0){
-            c.moveToFirst();
-            pedidocabeceraid = c.getInt(0);
+        String sql = "INSERT INTO PedidoCabecera(UsuarioID) VALUES ("+usuarioID+")";
+        db.execSQL(sql);
+       //Cursor cur = db.rawQuery("SELECT PedidoCabeceraID FROM PedidoCabecera WHERE PedidoCabeceraID IN (SELECT MAX(PedidoCabeceraID) FROM PedidoCabecera)",null);
+        Cursor cur = db.rawQuery("SELECT last_insert_rowid() FROM PedidoCabecera",null);
+        if (cur.moveToFirst()){
+            cur.moveToFirst();
+            pedidocabeceraid = cur.getInt(0);
+            cur.close();
             //Insertar lineas
-            for (int i = 0; i < arrProductos.size(); i++) {
-                prod = arrProductos.get(i);
-                sql = "INSERT INTO PedidoLinea (PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?,?)";
+            for (int i = 0; i < lista_productos.size(); i++) {
+                prod = lista_productos.get(i);
+                sql = "INSERT INTO PedidoLinea(PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?,?)";
                 db.rawQuery(sql,new String[]{Integer.toString(pedidocabeceraid),Integer.toString(prod.getCantidad()),prod.getExtra(),Double.toString(prod.getPrecio()),prod.getNombre()});
+                return true;
             }
             return true;
         }else{
-            return false;
+           return false;
         }
     }
 
