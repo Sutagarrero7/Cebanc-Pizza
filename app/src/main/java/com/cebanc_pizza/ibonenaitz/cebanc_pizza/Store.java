@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class Store extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "CebancPizza";
-    private static final int SCHEME_VERSION = 4;
+    private static final int SCHEME_VERSION = 5;
     private SQLiteDatabase db;
 
     public Store(Context context) {

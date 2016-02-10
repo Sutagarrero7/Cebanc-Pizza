@@ -97,14 +97,14 @@ public class GestionaPedido {
         int pedidocabeceraid;
         String sql = "INSERT INTO PedidoCabecera (FechaHoraPedido,UsuarioID) VALUES (datetime(),?)";
         db.rawQuery(sql,new String[]{Integer.toString(usuarioID)});
-        Cursor c = db.rawQuery("SELECT * FROM PedidoCabecera WHERE PedidoCabeceraID = (SELECT MAX(PedidoCabeceraID) FROM PedidoCabecera",null);
+        Cursor c = db.rawQuery("SELECT PedidoCabeceraID FROM PedidoCabecera WHERE PedidoCabeceraID = (SELECT MAX(PedidoCabeceraID) FROM PedidoCabecera)",null);
         if (c.getCount() > 0){
             c.moveToFirst();
             pedidocabeceraid = c.getInt(0);
             //Insertar lineas
             for (int i = 0; i < arrProductos.size(); i++) {
                 prod = arrProductos.get(i);
-                sql = "INSERT INTO PedidoLinea (PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?)";
+                sql = "INSERT INTO PedidoLinea (PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?,?)";
                 db.rawQuery(sql,new String[]{Integer.toString(pedidocabeceraid),Integer.toString(prod.getCantidad()),prod.getExtra(),Double.toString(prod.getPrecio()),prod.getNombre()});
             }
             return true;

@@ -69,7 +69,7 @@ public class DatosCliente extends AppCompatActivity {
                                                            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(DatosCliente.this);
                                                            alertDialog.setMessage("Los datos introducidos son incorrectos, ¿Deseas registrarte?");
                                                            alertDialog.setTitle("Ups...");
-                                                           alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
+                                                           alertDialog.setIcon(android.R.drawable.ic_dialog_info);
                                                            alertDialog.setCancelable(false);
                                                            alertDialog.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                                                                public void onClick(DialogInterface dialog, int which) {
