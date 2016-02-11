@@ -51,13 +51,17 @@ public class ResumenPedido extends AppCompatActivity {
         btnBorrar.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             if (bBorrar == false){
-                                                 bBorrar = true;
-                                                 btnBorrar.setBackgroundResource(R.drawable.borrar_on);
+                                             if (GestionaPedido.lista_productos.size() > 0) {
+                                                 if (bBorrar == false){
+                                                     bBorrar = true;
+                                                     btnBorrar.setBackgroundResource(R.drawable.borrar_on);
 
+                                                 }else{
+                                                     bBorrar = false;
+                                                     btnBorrar.setBackgroundResource(R.drawable.borrar_off);
+                                                 }
                                              }else{
-                                                 bBorrar = false;
-                                                 btnBorrar.setBackgroundResource(R.drawable.borrar_off);
+                                                 Toast.makeText(getApplicationContext(), "Tienes que añadir minimo 1 articulo", Toast.LENGTH_SHORT).show();
                                              }
                                          }
                                      }
