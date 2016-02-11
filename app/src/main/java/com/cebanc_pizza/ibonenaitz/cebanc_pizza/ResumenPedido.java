@@ -73,15 +73,19 @@ public class ResumenPedido extends AppCompatActivity {
         btnFinalizar.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View v) {
-                                                boolean ok = GestionaPedido.insertaPedido();
-                                                if (ok) {
-                                                    notificacion();
-                                                    //finish();
-                                                    Intent intent = new Intent(getApplicationContext(), DatosCliente.class);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                                    startActivity(intent);
+                                                if (GestionaPedido.lista_productos.size() > 0) {
+                                                    boolean ok = GestionaPedido.insertaPedido();
+                                                    if (ok) {
+                                                        notificacion();
+                                                        //finish();
+                                                        Intent intent = new Intent(getApplicationContext(), DatosCliente.class);
+                                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                        startActivity(intent);
+                                                    } else {
+                                                        Toast.makeText(getApplicationContext(), "Ups... No se ha podido guardar tu pedido", Toast.LENGTH_SHORT).show();
+                                                    }
                                                 }else{
-                                                    Toast.makeText(getApplicationContext(), "Ups... No se ha podido guardar tu pedido", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(getApplicationContext(), "Tienes que añadir minimo 1 articulo", Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         }
