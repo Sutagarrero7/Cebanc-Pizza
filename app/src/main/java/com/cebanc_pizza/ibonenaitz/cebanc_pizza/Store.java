@@ -31,7 +31,7 @@ public class Store extends SQLiteOpenHelper {
 
         db.execSQL("create table PedidoCabecera(" +
                 "PedidoCabeceraID integer primary key autoincrement," +
-                "FechaHoraPedido DATETIME DEFAULT (strftime('%s','now')," +
+                "FechaHoraPedido DATETIME DEFAULT CURRENT_TIMESTAMP," +
                 "TotalPedido text not null," +
                 "UsuarioID integer not null)");
 

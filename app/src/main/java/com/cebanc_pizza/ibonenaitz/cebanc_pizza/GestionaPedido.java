@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.widget.Toast;
 
 import java.sql.SQLData;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class GestionaPedido {
@@ -91,10 +92,10 @@ public class GestionaPedido {
         return pers;
     }
 
-    public static boolean insertaPedido(){
+    public static boolean insertaPedido(String prec){
         //Insertar cabecera
         int pedidocabeceraid;
-        String sql = "INSERT INTO PedidoCabecera(UsuarioID) VALUES ("+usuarioID+")";
+        String sql = "INSERT INTO PedidoCabecera(UsuarioID,TotalPedido) VALUES ("+usuarioID+",'"+prec+"')";
         db.execSQL(sql);
         Cursor cur = db.rawQuery("SELECT last_insert_rowid() FROM PedidoCabecera",null);
         if (cur.moveToFirst()){
@@ -113,8 +114,22 @@ public class GestionaPedido {
         }
     }
 
-    //Devuelve el precio total del pedido
-    public static double precioTotalPedido(){
+    //Devuelve el precio total del pedido en tipo string
+    public static String precioTotalPedido(){
+        double total = 0;
+        if (lista_productos.size() != 0) {
+            for (int i = 0; i < lista_productos.size(); i++) {
+                Producto p = lista_productos.get(i);
+                total += p.getPrecio() * p.getCantidad();
+            }
+        }
+        DecimalFormat df = new DecimalFormat("#.00");
+        String sTotal = df.format(total);
+        //total=Double.parseDouble(s);
+        return sTotal;
+    }
+    //Devuelve el precio total del pedido en tipo double
+    public static double precioTotalPedidoDouble(){
         double total = 0;
         if (lista_productos.size() != 0) {
             for (int i = 0; i < lista_productos.size(); i++) {
@@ -124,7 +139,6 @@ public class GestionaPedido {
         }
         return total;
     }
-
     //Metodo que busca en el array si existe el producto. Devuelve el indice del mismo
     public static int buscarProducto(String nombre, String extra,String tamano){
         int indice = -1;
@@ -163,7 +177,18 @@ public class GestionaPedido {
         return pedidosHoras;
     }
 
-    public static String totalLineasPedido(int pedID) {
+    public static String[] totalLineasPedido() {
+        int i = 0;
+        String sql = "SELECT TotalPedido FROM PedidoCabecera WHERE UsuarioID = ? ORDER BY PedidoCabeceraID";
+        Cursor c = db.rawQuery(sql,new String[]{Integer.toString(usuarioID)});
+        String[] totalPedidos=new String[c.getCount()];
+        while(c.moveToNext()){
+            totalPedidos[i] = c.getString(0);
+            i++;
+        }
+        return totalPedidos;
+    }
+    /*public static String totalLineasPedido(int pedID) {
         int i = 0;
         String sql = "SELECT SUM(Precio) FROM PedidoLinea WHERE PedidoCabeceraID = ?";
         Cursor c = db.rawQuery(sql,new String[]{Integer.toString(pedID)});
@@ -172,6 +197,6 @@ public class GestionaPedido {
             pre = Integer.toString(c.getInt(0));
         }
         return pre;
-    }
+    }*/
 
 }

@@ -74,7 +74,7 @@ public class ResumenPedido extends AppCompatActivity {
                                             @Override
                                             public void onClick(View v) {
                                                 if (GestionaPedido.lista_productos.size() > 0) {
-                                                    boolean ok = GestionaPedido.insertaPedido();
+                                                    boolean ok = GestionaPedido.insertaPedido(GestionaPedido.precioTotalPedido());
                                                     if (ok) {
                                                         notificacion();
                                                         //finish();
@@ -179,16 +179,17 @@ public class ResumenPedido extends AppCompatActivity {
         }
         ListaAdapter adapter = new ListaAdapter(this, nombre, imagenes_productos,cantidad,extra,tamanio,precio);
         lista.setAdapter(adapter);
-        lblPrecio.setText(Double.toString(GestionaPedido.precioTotalPedido()));
+        lblPrecio.setText(GestionaPedido.precioTotalPedido());
     }
 
     //Metodo que crea la notificacion
     public void notificacion() {
-        double p = GestionaPedido.precioTotalPedido();
-        CharSequence chapada = GestionaPedido.getCliente().getNombre() + ", le informamos de que su pedido está camino a " + GestionaPedido.getCliente().getDireccion()+". El total del pedido son: "+Double.toString(GestionaPedido.precioTotalPedido())+" euros.";
-        if (p > 20 && p <=33){
+        String p = GestionaPedido.precioTotalPedido();
+        Double pDouble=GestionaPedido.precioTotalPedidoDouble();
+        CharSequence chapada = GestionaPedido.getCliente().getNombre() + ", le informamos de que su pedido está camino a " + GestionaPedido.getCliente().getDireccion()+". El total del pedido son: "+GestionaPedido.precioTotalPedido()+" euros.";
+        if (pDouble > 20 && pDouble <=33){
             chapada = chapada + " Por ser un pedido superior a 20 euros te regalamos un peluche del muñeco de android.";
-        }else if(p>33){
+        }else if(pDouble>33){
             chapada = chapada + " Por ser un pedido superior a 33 euros te regalamos un peluche del muñeco de android y un vale para comer en el comedor de Cebanc.";
         }
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this)
@@ -213,10 +214,11 @@ public class ResumenPedido extends AppCompatActivity {
         d.setContentView(R.layout.popup_pedidos);
         pedidosID = GestionaPedido.getPedidosID();
         fechahora = GestionaPedido.getPedidosHoras();
-        total = new String[pedidosID.length];
-        for (int i=0;i < pedidosID.length; i++){
+        //total = new String[pedidosID.length];
+        total=GestionaPedido.totalLineasPedido();
+        /*for (int i=0;i < pedidosID.length; i++){
             total[i] = GestionaPedido.totalLineasPedido(Integer.parseInt(pedidosID[i]));
-        }
+        }*/
         ListaAdapterPedidos adapter = new ListaAdapterPedidos(this,pedidosID,fechahora,total);
         ListView listaPedidos = (ListView)d.findViewById(R.id.lstPedidos);
         listaPedidos.setAdapter(adapter);

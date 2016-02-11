@@ -32,12 +32,12 @@
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:layout_gravity="center"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
+            android:textSize="15dp"
             android:layout_alignTop="@+id/precio"
             android:layout_toRightOf="@+id/id"
-            android:layout_toEndOf="@+id/id"
-            android:layout_marginLeft="32dp"
-            android:layout_marginStart="32dp"
-            android:textSize="15dp" />
+            android:layout_toEndOf="@+id/id" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,12 +48,12 @@
             android:textStyle="bold"
             android:textColor="#ffffff"
             android:layout_gravity="center"
-            android:layout_marginLeft="26dp"
-            android:layout_marginStart="26dp"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp"
+            android:textSize="15dp"
             android:layout_alignTop="@+id/fechahora"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:textSize="15dp" />
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
