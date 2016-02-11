@@ -96,7 +96,6 @@ public class GestionaPedido {
         int pedidocabeceraid;
         String sql = "INSERT INTO PedidoCabecera(UsuarioID) VALUES ("+usuarioID+")";
         db.execSQL(sql);
-       //Cursor cur = db.rawQuery("SELECT PedidoCabeceraID FROM PedidoCabecera WHERE PedidoCabeceraID IN (SELECT MAX(PedidoCabeceraID) FROM PedidoCabecera)",null);
         Cursor cur = db.rawQuery("SELECT last_insert_rowid() FROM PedidoCabecera",null);
         if (cur.moveToFirst()){
             cur.moveToFirst();
@@ -105,8 +104,8 @@ public class GestionaPedido {
             //Insertar lineas
             for (int i = 0; i < lista_productos.size(); i++) {
                 prod = lista_productos.get(i);
-                sql = "INSERT INTO PedidoLinea(PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,?,?)";
-                db.rawQuery(sql,new String[]{Integer.toString(pedidocabeceraid),Integer.toString(prod.getCantidad()),prod.getExtra(),Double.toString(prod.getPrecio()),prod.getNombre()});
+                sql = "INSERT INTO PedidoLinea(PedidoCabeceraID,Cantidad,Extra,Precio,NombreArticulo) VALUES (?,?,?,"+prod.getPrecio()+",?)";
+                db.rawQuery(sql,new String[]{Integer.toString(pedidocabeceraid), Integer.toString(prod.getCantidad()),prod.getExtra(),prod.getNombre()});
             }
             return true;
         }else{
@@ -138,6 +137,41 @@ public class GestionaPedido {
             }
         }
         return indice;
+    }
+    public static String[] getPedidosID() {
+
+        int i = 0;
+        String sql = "SELECT PedidoCabeceraID FROM PedidoCabecera WHERE UsuarioID = ? ORDER BY PedidoCabeceraID";
+        Cursor c = db.rawQuery(sql,new String[]{Integer.toString(usuarioID)});
+        String[] pedidosID=new String[c.getCount()];
+        while(c.moveToNext()){
+            pedidosID[i] = Integer.toString(c.getInt(0));
+            i++;
+        }
+        return pedidosID;
+    }
+
+    public static String[] getPedidosHoras() {
+        int i = 0;
+        String sql = "SELECT FechaHoraPedido FROM PedidoCabecera WHERE UsuarioID = ? ORDER BY PedidoCabeceraID";
+        Cursor c = db.rawQuery(sql,new String[]{Integer.toString(usuarioID)});
+        String[] pedidosHoras=new String[c.getCount()];
+        while(c.moveToNext()){
+            pedidosHoras[i] = c.getString(0);
+            i++;
+        }
+        return pedidosHoras;
+    }
+
+    public static String totalLineasPedido(int pedID) {
+        int i = 0;
+        String sql = "SELECT SUM(Precio) FROM PedidoLinea WHERE PedidoCabeceraID = ?";
+        Cursor c = db.rawQuery(sql,new String[]{Integer.toString(pedID)});
+        String pre = "0";
+        while(c.moveToNext()){
+            pre = Integer.toString(c.getInt(0));
+        }
+        return pre;
     }
 
 }

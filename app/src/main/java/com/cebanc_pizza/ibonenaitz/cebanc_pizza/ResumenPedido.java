@@ -1,16 +1,19 @@
 package com.cebanc_pizza.ibonenaitz.cebanc_pizza;
 
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +25,7 @@ public class ResumenPedido extends AppCompatActivity {
     ArrayList<Producto> arrProductos;
     Producto producto;
     Persona client;
-
+    public Dialog d;
     String[] nombre,cantidad,extra,tamanio,precio;
     int[] imagenes_productos;
     TextView lblPrecio,lblNombre;
@@ -61,7 +64,7 @@ public class ResumenPedido extends AppCompatActivity {
         btnInfo.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-
+                                             abrirPopUp(v);
                                          }
                                      }
 
@@ -197,6 +200,31 @@ public class ResumenPedido extends AppCompatActivity {
         // Construir la notificación y emitirla
         NotificationManager notifyMgr = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);;
         notifyMgr.notify(1, builder.build());
+    }
+
+    //Metodo que abre el PopUp para registrar un usuario
+    public void abrirPopUp(View v){
+        String[] pedidosID,fechahora,total;
+        d = new Dialog(ResumenPedido.this);
+        d.setContentView(R.layout.popup_pedidos);
+        pedidosID = GestionaPedido.getPedidosID();
+        fechahora = GestionaPedido.getPedidosHoras();
+        total = new String[pedidosID.length];
+        for (int i=0;i < pedidosID.length; i++){
+            total[i] = GestionaPedido.totalLineasPedido(Integer.parseInt(pedidosID[i]));
+        }
+        ListaAdapterPedidos adapter = new ListaAdapterPedidos(this,pedidosID,fechahora,total);
+        ListView listaPedidos = (ListView)d.findViewById(R.id.lstPedidos);
+        listaPedidos.setAdapter(adapter);
+        ImageView cancelar= (ImageView)d.findViewById(R.id.imgCancelar);
+        cancelar.setOnClickListener(new ImageView.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                d.dismiss();
+            }
+
+        });
+        d.show();
     }
 
 

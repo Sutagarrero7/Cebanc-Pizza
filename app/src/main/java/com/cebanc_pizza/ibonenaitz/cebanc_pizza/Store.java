@@ -10,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class Store extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "CebancPizza";
-    private static final int SCHEME_VERSION = 6;
+    private static final int SCHEME_VERSION = 7;
     private SQLiteDatabase db;
 
     public Store(Context context) {
@@ -31,7 +31,7 @@ public class Store extends SQLiteOpenHelper {
 
         db.execSQL("create table PedidoCabecera(" +
                 "PedidoCabeceraID integer primary key autoincrement," +
-                "FechaHoraPedido DATETIME DEFAULT CURRENT_TIMESTAMP," +
+                "FechaHoraPedido DATETIME DEFAULT (strftime('%s','now')," +
                 "UsuarioID integer not null)");
 
         db.execSQL("create table PedidoLinea(" +
@@ -39,7 +39,7 @@ public class Store extends SQLiteOpenHelper {
                 "PedidoCabeceraID integer not null," +
                 "Cantidad integer not null," +
                 "Extra text not null," +
-                "Precio decimal not null," +
+                "Precio double not null," +
                 "NombreArticulo text not null)");
 
     }
