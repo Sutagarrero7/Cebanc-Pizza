@@ -30,6 +30,7 @@ public class ResumenPedido extends AppCompatActivity {
     int[] imagenes_productos;
     TextView lblPrecio,lblNombre;
     Button btnFinalizar,btnBorrar,btnInfo;
+    ImageView imgInfo;
     Boolean bBorrar = false;
 
     @Override
@@ -45,7 +46,8 @@ public class ResumenPedido extends AppCompatActivity {
         btnFinalizar = (Button)findViewById(R.id.btnFinalizar);
         btnBorrar = (Button)findViewById(R.id.btnBorrar_OnOff);
         btnBorrar.setBackgroundResource(R.drawable.borrar_off);
-        btnInfo=(Button)findViewById(R.id.btnInfo);
+        //btnInfo=(Button)findViewById(R.id.btnInfo);
+        imgInfo=(ImageView)findViewById(R.id.imgInfo);
         btnBorrar.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
@@ -61,7 +63,7 @@ public class ResumenPedido extends AppCompatActivity {
                                      }
 
         );
-        btnInfo.setOnClickListener(new View.OnClickListener() {
+        imgInfo.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
                                              abrirPopUp(v);

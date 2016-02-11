@@ -90,11 +90,15 @@
         android:layout_above="@+id/lblEuro"
         android:layout_toRightOf="@+id/lblEuro"
         android:layout_toEndOf="@+id/lblEuro" />
-    <Button
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btnInfo"
+        android:id="@+id/imgInfo"
+        android:src="@drawable/info"
         android:layout_above="@+id/lblEuro"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_below="@+id/lstProductos"
         android:layout_toRightOf="@+id/btnBorrar_OnOff"
         android:layout_toEndOf="@+id/btnBorrar_OnOff" />
